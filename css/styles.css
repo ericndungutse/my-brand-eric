@@ -1,0 +1,43 @@
+@import url(/css/components.styles.css);
+@import url(/css/aboutme.styles.css);
+@import url(/css/layout.css);
+@import url(/css/homepage.styles.css);
+@import url(/css/skills.styles.css);
+@import url(/css/portofolio.styles.css);
+
+:root {
+  --primary-color: rgb(247, 119, 55);
+  --secondary-color: rgb(254, 48, 138);
+  --grey-color-light: #dadde1;
+  --grey-color-dark: #6e6e6e;
+  --color-black: #111010;
+  --color-white: #fff;
+  --centering-padding: 13rem;
+  --border-radius: 0.2rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Happy Monkey", cursive;
+  letter-spacing: 0.1rem;
+  font-weight: 300;
+  line-height: 1.4;
+  color: var(--grey-color-dark);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: url(/img/background-img.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-attachment: fixed;
+}

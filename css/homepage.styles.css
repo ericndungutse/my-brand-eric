@@ -1,0 +1,26 @@
+.showcase {
+  align-items: center;
+}
+
+/* ********* SHOWCASE ******* */
+.showcase__intro {
+  width: 50%;
+  min-width: 20rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: start;
+}
+
+.showcase__image--container {
+  width: 45%;
+  min-width: 20rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.showcase__image {
+  width: 100%;
+  height: 100%;
+  max-width: 38em;
+}

@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,7 +18,7 @@
         <img class="header__logo" src="/img/Logo.png" />
       </div>
       <nav class="header__nav">
-        <a href="#" class="link header__nav-link active">Home</a>
+        <a href="/index.html" class="link header__nav-link">Home</a>
         <a href="/about.html" class="link header__nav-link">About Me</a>
         <a href="/skills.html" class="link header__nav-link">Skills</a>
         <a href="/portofolio.html" class="link header__nav-link">My Work</a>
@@ -27,31 +30,63 @@
       </div>
     </header>
 
-    <!-- SHOWCASE -->
-    <section class="flex-section showcase">
-      <div class="showcase__intro">
-        <h1 class="heading-primary">
-          <spam class="top">Hi there,</spam>
-          It's Eric Ndungutse
-        </h1>
+    <!-- Sign in Board -->
+    <section class="flex-section">
+        <form class="form sign-in-form">
+            <div class="form--header">
+                <h2 class="form-title">Log in with Email</h2>
+            </div>
 
-        <p class="paragraph">
-          I am a JavaScript Full Stack Developer. I use ExpressJS on the backend
-          with mongoDB, and ReactJS on frontend. I am passionate about creating
-          digital solutions to problems the communinty is facing.
-        </p>
 
-        <button class="btn btn--primary btn--big">Learn More</button>
-      </div>
-
-      <div class="showcase__image--container">
-        <img
-          src="/img/showcase profile image.png"
-          class="showcase__image"
-          alt="profile image"
+      <div class="form-input-group">
+        <label for="" class="form-input-lebel">Email</label>
+        <input
+          type="email"
+          class="form-input"
+          placeholder="Enter your Email..."
         />
       </div>
+
+      <div class="form-input-group">
+        <label for="" class="form-input-lebel">Password</label>
+        <input
+          type="password"
+          class="form-input"
+          placeholder="Enter your Password..."
+        />
+      </div>
+
+      <button class="btn btn--primary btn--small">Login</button>
+
+      <div class="form-help">
+
+          <a href="#" class="link link--text">Forgot password?</a>
+          <a href="#" class="link link--text">Not registered?</a>
+      </div>
+      
+      
+    </form>
+
+     <div class="separator">
+   <div class="or-separator">
+     <div class="vertical-line"></div>
+     <div class="separator-text">OR</div>
+     <div class="vertical-line"></div>
+   </div>
+ </div>
+
+ <div class="login-with">
+  <button class="login-with-btn">
+    <img src="/img/google_Acc_1-removebg-preview.png" alt="">
+    <p class="paragraph">Login with Google</p>
+  </button>
+  <button class="login-with-btn">
+    <img src="/img/facebook-svgrepo-com.svg" alt="">
+    <p class="paragraph">Login with Facebook</p>
+  </button>
+ </div> 
     </section>
+    
 
     <aside class="social-links">
       <a href="#">
@@ -96,3 +131,4 @@
     </svg>
   </body>
 </html>
+
