@@ -94,7 +94,7 @@
   background-color: #f4f4f436;
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-  padding: 3rem 2rem;
+  padding: 2rem 2rem;
   border-radius: var(--border-radius);
   display: flex;
   flex-direction: column;
@@ -104,21 +104,40 @@
   margin-bottom: 1.3rem;
 }
 
+.form--header {
+  color: #101010;
+}
+
 .form-input-group {
   font-size: 1.3rem;
   display: flex;
-  margin-bottom: 1.3rem;
+  margin-bottom: 1rem;
   flex-direction: column;
 }
 
 .form-input {
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
+  padding: 1.2rem 2rem;
+  margin: 0.8rem 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: var(--border-radius);
-  box-sizing: border-box;
+  outline: 1px solid #dddddd;
+  transition: all 0.4s;
+}
+
+.form-input:focus:invalid,
+.form-textarea:focus:invalid {
+  outline: 0.2rem solid var(--secondary-color);
+}
+
+.form-input:focus:valid,
+.form-textarea:focus:valid {
+  outline: 0.2rem solid rgb(0, 192, 0);
+}
+
+.form-input-label {
+  margin-bottom: -0.5rem;
 }
 
 .form-help {
@@ -137,65 +156,13 @@
   font-weight: 100;
 }
 
-.login-with {
-  flex-basis: 45%;
-  max-width: 38rem;
-  min-width: 25rem;
-
-  background-color: #f4f4f436;
-  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
-    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding: 5rem 2rem;
-}
-
-.login-with-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-  gap: 2rem;
-  padding: 0.8rem 0;
-  background-color: var(--color-white);
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+.form-textarea {
+  width: 100%;
+  padding: 1.2rem 2rem;
+  margin: 0.8rem 0;
+  display: inline-block;
+  border: 1px solid #ccc;
   border-radius: var(--border-radius);
-  border: none;
-  cursor: pointer;
-}
-
-.login-with-btn:hover {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-.login-with-btn img {
-  width: 4rem;
-}
-
-/* SEPARATOR */
-.separator {
-  flex-basis: 5%;
-  height: 25rem;
-  display: flex;
-  justify-content: center;
-}
-
-.separator-text {
-  font-size: 1.6rem;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-}
-
-.or-separator {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: var(--grey-color-dark);
-}
-
-.vertical-line {
-  border-left: 0.3rem solid var(--grey-color-dark);
-  flex-grow: 1;
+  outline: none;
+  transition: all 0.4s;
 }
