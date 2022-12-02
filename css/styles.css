@@ -6,6 +6,7 @@
 @import url(/css/portofolio.styles.css);
 @import url(/css/login.styles.css);
 @import url(/css/contactme.styles.css);
+@import url(/css/blogs.styles.css);
 
 :root {
   --primary-color: rgb(247, 119, 55);
@@ -14,7 +15,7 @@
   --grey-color-dark: #585858;
   --color-black: #111010;
   --color-white: #fff;
-  --centering-padding: 13rem;
+  --centering-padding: 18rem;
   --border-radius: 0.2rem;
 }
 
