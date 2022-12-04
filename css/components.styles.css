@@ -27,7 +27,7 @@
 
 .heading-primary .top {
   display: block;
-  margin-bottom: -1rem;
+  margin-bottom: -0.5rem;
 }
 
 /* ****** BUTTON ***** */
@@ -44,6 +44,7 @@
 }
 
 .btn--primary {
+  padding: 0.5rem 0.8rem;
   background: var(--primary-color);
   background: linear-gradient(
     90deg,

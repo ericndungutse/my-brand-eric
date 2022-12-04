@@ -12,6 +12,21 @@
   align-items: start;
 }
 
+.showcase__intro .heading-primary {
+  animation-name: from-top;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+}
+
+.showcase__intro .paragraph,
+.showcase__intro .btn {
+  animation-name: from-bottom;
+  animation-duration: 2s;
+  animation-delay: 0.8s;
+  animation-fill-mode: backwards;
+  animation-timing-function: ease-in-out;
+}
+
 .showcase__image--container {
   width: 45%;
   min-width: 20rem;
@@ -23,4 +38,47 @@
   width: 100%;
   height: 100%;
   max-width: 38em;
+  animation-name: bounceIn;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+}
+
+/* Animations */
+@keyframes from-top {
+  0% {
+    opacity: 0;
+    transform: translateY(-5rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes from-bottom {
+  0% {
+    opacity: 0;
+    transform: translateY(5rem);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-0.5rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }

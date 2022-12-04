@@ -3,19 +3,19 @@
 }
 
 .about-me__text {
-  width: 50%;
+  width: 60%;
   min-width: 25rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  gap: 3rem;
+  gap: 1.5rem;
   align-items: start;
 }
 
 .about-me__image-container {
   display: flex;
   justify-content: end;
-  width: 45%;
+  width: 40%;
   min-width: 25rem;
   height: 100%;
 }
