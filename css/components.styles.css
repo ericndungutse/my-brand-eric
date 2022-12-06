@@ -32,6 +32,7 @@
 
 /* ****** BUTTON ***** */
 .btn {
+  width: max-content;
   border: none;
   border-radius: var(--border-radius);
   transition: all 200ms;
@@ -41,10 +42,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0.5rem 0.8rem;
 }
 
 .btn--primary {
-  padding: 0.5rem 0.8rem;
   background: var(--primary-color);
   background: linear-gradient(
     90deg,
@@ -54,12 +55,23 @@
   color: var(--color-white);
 }
 
+.btn--secondary {
+  background: #ffff19;
+  color: #424242;
+}
+
+.btn--secondary:hover {
+  box-shadow: rgb(0 0 0 / 16%) 0 0.1rem 0.4rem, #c84200 0 0 0 0.2rem;
+  background-color: #e85811;
+}
+
 .btn--primary:hover {
   box-shadow: rgb(0 0 0 / 16%) 0 0.1rem 0.4rem, #c84200 0 0 0 0.2rem;
   background-color: #e85811;
 }
 
 .btn--link {
+  display: inline-block;
   text-decoration: none;
 }
 
@@ -90,7 +102,7 @@
 
 /*  FORM */
 .form {
-  flex-basis: 45%;
+  width: 45%;
   min-width: 25rem;
   max-width: 38rem;
   background-color: #f4f4f436;
@@ -167,4 +179,21 @@
   border-radius: var(--border-radius);
   outline: none;
   transition: all 0.4s;
+}
+
+/* Tablet Potrait */
+@media only screen and (max-width: 900px) {
+}
+
+/* Phone */
+@media only screen and (max-width: 600px) {
+  .heading-primary {
+    font-size: 2.5rem;
+  }
+
+  .form {
+    width: 100%;
+    min-width: unset;
+    max-width: unset;
+  }
 }

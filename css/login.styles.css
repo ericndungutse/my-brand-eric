@@ -1,11 +1,10 @@
 .login-with {
-  flex-basis: 45%;
+  width: 45%;
   max-width: 38rem;
   min-width: 25rem;
 
   background-color: #f4f4f436;
-  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
-    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, #1b1f2326 0px 0px 0px 1px;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -59,4 +58,18 @@
 .vertical-line {
   border-left: 0.3rem solid var(--grey-color-dark);
   flex-grow: 1;
+}
+
+/* Media Queries */
+/* Tablet Potrait */
+@media (max-width: 900px) {
+}
+
+/* Phone */
+@media (max-width: 600px) {
+  .login-with {
+    width: 100%;
+    max-width: unset;
+    min-width: unset;
+  }
 }

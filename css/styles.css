@@ -17,6 +17,9 @@
   --color-white: #fff;
   --centering-padding: 14rem;
   --border-radius: 0.2rem;
+
+  /* Viewpoints */
+  --max-two-eighty: 280px;
 }
 
 * {
@@ -43,4 +46,34 @@ body {
   background-size: contain;
   background-position: center;
   background-attachment: fixed;
+}
+
+/* Tablet Landscape */
+@media only screen and (max-width: 1200px) {
+  /* html {
+    font-size: 62%;
+  } */
+  :root {
+    --centering-padding: 6rem;
+  }
+}
+
+/* Tablet Potrait */
+@media only screen and (max-width: 900px) {
+  /* html {
+    font-size: 65%;
+  } */
+  :root {
+    --centering-padding: 2rem;
+  }
+}
+
+/* Phone */
+@media only screen and (max-width: 600px) {
+  /* html {
+    font-size: 55%;
+  } */
+  :root {
+    --centering-padding: 1rem;
+  }
 }

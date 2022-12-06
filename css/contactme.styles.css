@@ -37,3 +37,23 @@
   overflow: hidden;
   filter: drop-shadow(0px 0px 21px 0px rgba(0, 0, 0, 0.61));
 }
+
+/* Phone */
+@media (max-width: 600px) {
+  .shadow-wrapper {
+    width: 100%;
+  }
+  .contactme__showcase {
+    padding: 2rem 2rem 10rem 2rem;
+    text-align: center;
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 75%,
+      55% 75%,
+      46% 100%,
+      35% 75%,
+      0 75%
+    );
+  }
+}

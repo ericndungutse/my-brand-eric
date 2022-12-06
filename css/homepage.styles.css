@@ -43,6 +43,31 @@
   animation-timing-function: ease-in-out;
 }
 
+/* Media Querries */
+
+/* Tablet Potrait */
+@media only screen and (max-width: 900px) {
+  .showcase__intro {
+    width: 55%;
+  }
+}
+
+/* Phone */
+@media only screen and (max-width: 600px) {
+  .showcase__image--container {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .showcase__image {
+    max-width: unset;
+  }
+
+  .showcase__intro {
+    width: 100%;
+  }
+}
+
 /* Animations */
 @keyframes from-top {
   0% {
@@ -60,11 +85,6 @@
   0% {
     opacity: 0;
     transform: translateY(5rem);
-  }
-
-  50% {
-    opacity: 1;
-    transform: translateY(-0.5rem);
   }
 
   100% {

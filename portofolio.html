@@ -12,7 +12,9 @@
     <!-- HEADER -->
     <header class="header">
       <div class="header__logo-container">
-        <img class="header__logo" src="/img/Logo.png" />
+        <a href="./index.html"
+          ><img class="header__logo" src="/img/Logo.png"
+        /></a>
       </div>
       <nav class="header__nav">
         <a href="/index.html" class="link header__nav-link">Home</a>
@@ -29,7 +31,36 @@
           >Log in</a
         >
       </div>
+
+      <img
+        class="open-mobile-nav-icon"
+        src="/img/menu-svgrepo-com.svg"
+        alt=""
+      />
     </header>
+
+    <div class="overlay"></div>
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+      <spam class="close-mobile-nav">&times;</spam>
+      <nav class="mobile-nav__nav">
+        <a href="/index.html" class="link mobile-nav__nav-link">Home</a>
+        <a href="/about.html" class="link mobile-nav__nav-link">About Me</a>
+        <a href="/skills.html" class="link mobile-nav__nav-link">Skills</a>
+        <a href="/portofolio.html" class="link mobile-nav__nav-link active"
+          >My Work</a
+        >
+        <a href="/blog.html" class="link mobile-nav__nav-link">Blogs</a>
+        <a href="/contactme.html" class="link mobile-nav__nav-link"
+          >Contact Me</a
+        >
+      </nav>
+      <div class="mobile-nav__user-nav">
+        <a href="/sign-in.html" class="btn btn--secondary btn--big btn--link"
+          >Log in</a
+        >
+      </div>
+    </div>
 
     <!-- MY WORK CONTENT -->
     <section class="grid-container mywork">
@@ -137,9 +168,6 @@
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer"></footer>
-
     <!-- SOCIAL NETWORK LINKS -->
     <aside class="social-links">
       <a href="#">
@@ -180,6 +208,9 @@
       </a>
     </aside>
 
+    <!-- FOOTER -->
+    <footer class="footer"></footer>
+
     <svg class="svg">
       <clipPath id="footer-clip" clipPathUnits="objectBoundingBox">
         <path
@@ -187,5 +218,7 @@
         ></path>
       </clipPath>
     </svg>
+
+    <script src="./js/script.js"></script>
   </body>
 </html>

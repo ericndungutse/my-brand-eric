@@ -24,14 +24,6 @@
   color: var(--color-white);
 }
 
-.blog .btn {
-  width: 10rem;
-  font-size: 1.4rem;
-  padding: 0.5rem 0.8rem;
-  background: #ffff19;
-  color: #424242;
-}
-
 .blog__text {
   margin-bottom: 2rem;
   color: var(--color-white);

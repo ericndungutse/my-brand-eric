@@ -26,3 +26,38 @@
   max-width: 35rem;
   transform: translateY(5%);
 }
+
+/* Tablet Potrait */
+@media only screen and (max-width: 900px) {
+  .about-me__text {
+    width: 50%;
+  }
+
+  .about-me__image-container {
+    width: 50%;
+    height: 60rem;
+  }
+
+  .about-me__image {
+    max-height: 100%;
+  }
+}
+
+/* Phone */
+@media only screen and (max-width: 600px) {
+  .about-me__text {
+    width: 100%;
+  }
+
+  .about-me__image-container {
+    width: 100%;
+    min-width: unset;
+    justify-content: center;
+  }
+
+  .about-me__image {
+    width: 100%;
+    max-width: unset;
+    transform: unset;
+  }
+}
