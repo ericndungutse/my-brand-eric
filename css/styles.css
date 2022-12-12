@@ -48,6 +48,10 @@ body {
   background-attachment: fixed;
 }
 
+.full-width {
+  width: 100% !important;
+}
+
 /* Tablet Landscape */
 @media only screen and (max-width: 1200px) {
   /* html {
@@ -60,9 +64,6 @@ body {
 
 /* Tablet Potrait */
 @media only screen and (max-width: 900px) {
-  /* html {
-    font-size: 65%;
-  } */
   :root {
     --centering-padding: 2rem;
   }
@@ -70,10 +71,7 @@ body {
 
 /* Phone */
 @media only screen and (max-width: 600px) {
-  /* html {
-    font-size: 55%;
-  } */
   :root {
-    --centering-padding: 1rem;
+    --centering-padding: 7.5%;
   }
 }
