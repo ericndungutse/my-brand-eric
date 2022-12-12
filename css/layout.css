@@ -11,7 +11,7 @@
 .grid-container {
   padding: 0 var(--centering-padding);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 25rem));
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 30rem));
   grid-gap: 3rem;
   justify-content: space-evenly;
 }
@@ -252,7 +252,7 @@
   }
 
   .grid-container {
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 45rem));
+    grid-template-columns: repeat(auto-fit, minmax(100%, 45rem));
     justify-content: center;
   }
 
