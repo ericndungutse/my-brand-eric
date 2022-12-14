@@ -61,6 +61,10 @@
 }
 
 .btn--secondary:hover {
+  color: #fff;
+}
+
+.btn--secondary:hover {
   box-shadow: rgb(0 0 0 / 16%) 0 0.1rem 0.4rem, #c84200 0 0 0 0.2rem;
   background-color: #e85811;
 }
