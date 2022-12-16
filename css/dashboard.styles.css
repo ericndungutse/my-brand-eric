@@ -271,10 +271,13 @@ thead {
   gap: 3rem;
   width: 70rem;
   padding: 4rem;
-  position: relative;
 }
 
 .modal__inquiry .paragraph:last-child {
   font-weight: 900;
   font-size: 1.1rem;
+}
+
+.modal__inquiry h2 {
+  width: max-content;
 }

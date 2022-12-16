@@ -57,8 +57,15 @@ body {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #375;
+  background-color: var(--secondary-color);
   border-radius: 0.5rem;
+}
+
+::selection {
+  color: var(--color-white) !important;
+  background-color: var(--secondary-color);
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
 }
 
 .full-width {

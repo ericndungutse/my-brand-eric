@@ -6,6 +6,9 @@ const db = {
 };
 
 const inquiriesTableBody = document.querySelector(".inquiries-table__body");
+const modal = document.querySelector(".modal");
+const overlay = document.querySelector(".overlay");
+const inquiryModal = document.querySelector(".modal__inquiry");
 
 // Date Formatter
 const dateFormatter = (date) => {
@@ -16,6 +19,18 @@ const dateFormatter = (date) => {
     year: "numeric",
   }).format(new Date(date));
 };
+
+// Open/Close Modal
+const openCloseModal = () => {
+  modal.classList.toggle("show-modal");
+  overlay.classList.toggle("show-overlay");
+};
+
+// Close modal handlers
+modal.addEventListener("click", (e) => {
+  if (e.target.classList.contains("modal__close")) openCloseModal();
+});
+overlay.addEventListener("click", openCloseModal);
 
 // Render Inquiries
 db.inquiries.forEach((inquiry, index) => {
@@ -46,7 +61,23 @@ const readInquiryBtn = document.querySelectorAll(".read-inquiry-btn");
 readInquiryBtn.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     const id = btn.getAttribute("data-id");
-    const inquiry = db.inquiries[id];
+    let { name, msg, date } = db.inquiries[id];
+
+    date = dateFormatter(date);
+
+    inquiryModal.innerHTML = "";
+
+    inquiryModal.insertAdjacentHTML(
+      "afterbegin",
+      `
+      <span class="modal__close">&times;</span>
+        <h2 class="heading-primary">${name}</h2>
+        <p class="paragraph">${msg}</p>
+        <p class="paragraph">${date}</p>
+    `
+    );
+
+    openCloseModal();
   });
 });
 
