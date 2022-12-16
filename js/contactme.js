@@ -1,17 +1,7 @@
 "use strict";
-let db = {};
+
+import Inquiry from "./model.js";
 const contactMeForm = document.querySelector(".contact-me-form");
-
-// IIFE INITIALIZER
-(function () {
-  let inquiries = localStorage.getItem("inquiries");
-
-  if (!inquiries) {
-    inquiries = localStorage.setItem("inquiries", JSON.stringify([]));
-  }
-
-  db.inquiries = JSON.parse(inquiries);
-})();
 
 // Form That submits an inquiry
 contactMeForm.addEventListener("submit", (e) => {
@@ -19,16 +9,18 @@ contactMeForm.addEventListener("submit", (e) => {
 
   const formElements = contactMeForm.elements;
 
-  const msg = {
+  // Create inquiry object
+  const inquiry = {
     name: formElements["name"].value,
     email: formElements["email"].value,
     msg: formElements["msg"].value,
     date: new Date(),
   };
 
-  db.inquiries.push(msg);
-  localStorage.setItem("inquiries", JSON.stringify(db.inquiries));
+  // Add enquiry obj to local storage.
+  Inquiry.create(inquiry);
 
+  // Reset inputs of the form
   formElements["name"].value = "";
   formElements["email"].value = "";
   formElements["msg"].value = "";

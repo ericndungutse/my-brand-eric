@@ -1,5 +1,4 @@
 "use strict";
-console.log("Hello");
 
 const mobileNav = document.querySelector(".mobile-nav");
 const overlay = document.querySelector(".overlay");

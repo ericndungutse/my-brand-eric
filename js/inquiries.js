@@ -135,4 +135,6 @@ document.addEventListener("click", (e) => {
 
   // Update Local Storage with updated version of data
   localStorage.setItem("inquiries", JSON.stringify(state.inquiries));
+
+  openCloseModal();
 });
