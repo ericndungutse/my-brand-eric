@@ -1,3 +1,4 @@
+"use strict";
 let db = {};
 const contactMeForm = document.querySelector(".contact-me-form");
 
@@ -23,6 +24,7 @@ contactMeForm.addEventListener("submit", (e) => {
     name: formElements["name"].value,
     email: formElements["email"].value,
     msg: formElements["msg"].value,
+    date: new Date(),
   };
 
   db.inquiries.push(msg);

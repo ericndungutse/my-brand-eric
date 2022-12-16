@@ -30,27 +30,6 @@
     </header>
 
     <div class="overlay"></div>
-    <!-- Mobile Navigation -->
-    <div class="mobile-nav">
-      <spam class="close-mobile-nav">&times;</spam>
-      <nav class="mobile-nav__nav">
-        <a href="/index.html" class="link mobile-nav__nav-link">Home</a>
-        <a href="/about.html" class="link mobile-nav__nav-link active"
-          >About Me</a
-        >
-        <a href="/skills.html" class="link mobile-nav__nav-link">Skills</a>
-        <a href="/portofolio.html" class="link mobile-nav__nav-link">My Work</a>
-        <a href="/blog.html" class="link mobile-nav__nav-link">Blogs</a>
-        <a href="/contactme.html" class="link mobile-nav__nav-link"
-          >Contact Me</a
-        >
-      </nav>
-      <div class="mobile-nav__user-nav">
-        <a href="/sign-in.html" class="btn btn--secondary btn--big btn--link"
-          >Log in</a
-        >
-      </div>
-    </div>
 
     <!-- DASHBOARD -->
     <main>
@@ -71,59 +50,20 @@
       <!-- Dashboard Content -->
       <section class="dashboard-content">
         <div class="dashboard-inquiries">
-          <h1 class="heading-primary">INQUIRIES</h1>
+          <div class="dashboard-inquiries__header">
+            <h1 class="heading-primary">INQUIRIES</h1>
+          </div>
 
           <table class="inquiries-table">
             <thead>
-              <th>#</th>
+              <th class="center">#</th>
               <th>Name</th>
               <th>Email</th>
               <th>Date</th>
               <th>Action</th>
             </thead>
 
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>Eric Ndungutse</td>
-                <td>dav.ndungutse@gmail.com</td>
-                <td>29 Dec, 2022</td>
-                <td class="table-inquiries-action">
-                  <button class="btn btn--secondary btn--small">Read</button>
-                  <button class="btn btn--primary btn--small">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Eric Ndungutse</td>
-                <td>dav.ndungutse@gmail.com</td>
-                <td>29 Dec, 2022</td>
-                <td class="table-inquiries-action">
-                  <button class="btn btn--secondary btn--small">Read</button>
-                  <button class="btn btn--primary btn--small">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Eric Ndungutse</td>
-                <td>dav.ndungutse@gmail.com</td>
-                <td>29 Dec, 2022</td>
-                <td class="table-inquiries-action">
-                  <button class="btn btn--secondary btn--small">Read</button>
-                  <button class="btn btn--primary btn--small">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Eric Ndungutse</td>
-                <td>dav.ndungutse@gmail.com</td>
-                <td>29 Dec, 2022</td>
-                <td class="table-inquiries-action">
-                  <button class="btn btn--secondary btn--small">Read</button>
-                  <button class="btn btn--primary btn--small">Delete</button>
-                </td>
-              </tr>
-            </tbody>
+            <tbody class="inquiries-table__body"></tbody>
           </table>
         </div>
       </section>
@@ -176,6 +116,6 @@
         ></path>
       </clipPath>
     </svg>
-    <script src="./js/script.js"></script>
+    <script src="./js/inquiries.js"></script>
   </body>
 </html>
