@@ -121,7 +121,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(2px);
   transition: all 0.1s;
   opacity: 0;
@@ -130,7 +130,7 @@
 
 .show-overlay {
   opacity: 1;
-  z-index: 1;
+  z-index: 100;
 }
 
 /* Mobile Nav */
@@ -196,7 +196,82 @@
   width: 70%;
   visibility: visible;
   opacity: 1;
-  z-index: 2;
+  z-index: 110;
+}
+
+/* MODAL */
+.modal {
+  width: max-content;
+  position: fixed;
+  top: -300%;
+  border-radius: 0.3rem;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  left: 0;
+  right: 0;
+  bottom: auto;
+  margin: auto;
+  background-color: #fff;
+  transition: top 0.2s ease-out;
+}
+
+.modal-header {
+  background-color: #109648;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  padding: 2.5rem 3rem;
+}
+
+.modal-header i {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.modal-header h2 {
+  font-size: 1.6rem;
+}
+
+.modal-body {
+  padding: 2.2rem 3rem;
+}
+
+.modal-footer {
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  border-top: 1px solid #e5e5e5;
+  padding: 1.5rem 3rem;
+}
+
+.show-modal {
+  top: 10rem;
+  z-index: 110;
+}
+
+.modal__close {
+  position: absolute;
+  right: 1.8rem;
+  top: 1.8rem;
+  height: 3.2rem;
+  width: 3.2rem;
+  border-radius: 50%;
+  font-size: 3rem;
+  background-color: var(--grey-color-light-2);
+  color: rgb(28, 30, 33);
+  cursor: pointer;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.1s;
+}
+
+.modal__close:hover {
+  background-color: var(--grey-color-dark-2);
 }
 
 /* Tablet Potrait */

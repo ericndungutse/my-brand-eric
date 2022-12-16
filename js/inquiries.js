@@ -39,15 +39,15 @@ db.inquiries.forEach((inquiry, index) => {
   );
 });
 
-// // Get and Render Inquiry
-// const readInquiryBtn = document.querySelectorAll(".read-inquiry-btn");
+// Get and Render Inquiry
+const readInquiryBtn = document.querySelectorAll(".read-inquiry-btn");
 
-// // 1) Get inquiry based on index.
-// readInquiryBtn.forEach((btn) => {
-//   btn.addEventListener("click", (e) => {
-//     const id = btn.getAttribute("data-id");
-//     const inquiry = db.inquiries[id];
-//   });
-// });
+// 1) Get inquiry based on index.
+readInquiryBtn.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const id = btn.getAttribute("data-id");
+    const inquiry = db.inquiries[id];
+  });
+});
 
 // // 2) Render inquiry

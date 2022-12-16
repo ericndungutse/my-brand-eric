@@ -245,12 +245,16 @@
   padding-top: 1.2rem;
   padding-bottom: 1.2rem;
   text-align: left;
-  color: var(--grey-color-dark);
+  color: var(--color-white);
   font-size: 1.4rem;
 }
 
 thead {
-  background-color: var(--grey-color-light);
+  background: linear-gradient(
+    90deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  );
 }
 
 .table-inquiries-action {
@@ -258,4 +262,19 @@ thead {
   justify-content: flex-start;
   align-items: center;
   gap: 2rem;
+}
+
+/* Inquiry */
+.modal__inquiry {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 70rem;
+  padding: 4rem;
+  position: relative;
+}
+
+.modal__inquiry .paragraph:last-child {
+  font-weight: 900;
+  font-size: 1.1rem;
 }
