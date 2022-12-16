@@ -1,3 +1,8 @@
+.dashboard-body {
+  background-color: #fff;
+  background-image: unset;
+}
+
 .dashboard-header {
   position: fixed;
   left: 0;
@@ -10,6 +15,7 @@
 }
 
 .dashboard-footer {
+  margin-top: auto;
   margin-left: 20rem;
 }
 
@@ -53,6 +59,10 @@
   margin-left: 20rem;
   margin-top: 7rem;
   z-index: 1;
+}
+
+.dashboard-inquiries {
+  padding: 2rem 8%;
 }
 
 /* .dashboard {
@@ -189,3 +199,55 @@
 .blog__time {
   font-size: 0.8rem !important;
 } */
+
+/* TABLE */
+.inquiries-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 1.3rem;
+}
+
+.inquiries-table tr,
+.inquiries-table th {
+  min-width: 5rem;
+}
+
+.inquiries-table td,
+.inquiries-table th {
+  padding: 0.8rem;
+}
+
+.inquiries-table td {
+  color: var(--color-black);
+}
+
+.inquiries-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.inquiries-table tr:hover {
+  background-color: #ddd;
+}
+
+.inquiries-table th {
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+  text-align: left;
+  color: white;
+  font-size: 1.6rem;
+}
+
+thead {
+  background-image: linear-gradient(
+    90deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  );
+}
+
+.table-inquiries-action {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+}
