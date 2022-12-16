@@ -221,7 +221,7 @@
   justify-content: space-between;
   align-items: center;
   color: #fff;
-  padding: 2.5rem 3rem;
+  padding: 1.5rem 1rem;
 }
 
 .modal-header i {
@@ -244,7 +244,7 @@
   align-items: center;
   color: #fff;
   border-top: 1px solid #e5e5e5;
-  padding: 1.5rem 3rem;
+  padding: 1rem 1.5rem;
 }
 
 .show-modal {
@@ -272,6 +272,22 @@
 
 .modal__close:hover {
   background-color: var(--grey-color-dark-2);
+}
+
+.confirm-dialog-box .modal-header {
+  padding: 1rem 0.8rem;
+  background-color: #f6f7f9;
+  color: #555;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.confirm-dialog-box .btn {
+  width: 7rem;
+  height: 2.5rem;
+}
+
+.confirm-dialog-box .modal-header h3 {
+  font-size: 1.6rem;
 }
 
 /* Tablet Potrait */

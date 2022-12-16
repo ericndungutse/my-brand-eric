@@ -2,7 +2,6 @@
 let db = {};
 const contactMeForm = document.querySelector(".contact-me-form");
 
-console.log(contactMeForm);
 // IIFE INITIALIZER
 (function () {
   let inquiries = localStorage.getItem("inquiries");
