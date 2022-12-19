@@ -1,23 +1,42 @@
-import state from "./index.js";
-
 class Collection {
+  // Global Create Method
   create(doc) {
     // Get Collection in which to add new doc
     let colName = this.constructor.name === "InquiryCOl" ? "inquiries" : null;
 
-    // Update State
-    state.inquiries.push(doc);
+    // Get Collection
+    const col = this.#getCol(colName) || this.#createColInLocalStorage(colName);
 
-    // Update State
-    this.#updateLocalStorage(state.inquiries);
+    // Push new document into the collection
+    col.push(doc);
+
+    //Update localStorage
+    this.#updateLocalStorage(colName, col);
 
     // Return the created Document
     return doc;
   }
 
+  // Global Get Method
+  get(colName) {
+    return this.#getCol(colName);
+  }
+
+  // PRIVATE METHODS
   // Update Local storage Method
-  #updateLocalStorage(data) {
-    localStorage.setItem("inquiries", JSON.stringify(data));
+  #updateLocalStorage(ColName, data) {
+    localStorage.setItem(ColName, JSON.stringify(data));
+  }
+
+  // Get collection
+  #getCol(colName) {
+    return JSON.parse(localStorage.getItem(colName));
+  }
+
+  // creates an array if col doesnot exist in ocalstorage
+  #createColInLocalStorage(colName) {
+    localStorage.setItem(colName, JSON.stringify([]));
+    return this.#getCol(colName);
   }
 }
 
@@ -30,11 +49,3 @@ class InquiryCOl extends Collection {
 const Inquiry = new InquiryCOl();
 
 export default Inquiry;
-
-// inquiry.create({
-//   name: "Eric Ndungutse",
-//   email: "dav.ndungutse@gmail.com",
-//   msg: "Message 1",
-// });
-
-// console.log(state);

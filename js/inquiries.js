@@ -1,9 +1,14 @@
 "use strict";
 
+// Import Inquiry
+import Inquiry from "./model.js";
+
+const inquiries = Inquiry.get("inquiries");
+
 // Initialise state
 const state = {
   inquiryToDelete: null,
-  inquiries: JSON.parse(window.localStorage.getItem("inquiries")),
+  inquiries,
 };
 
 // // Connect to Localstorage
