@@ -2,7 +2,7 @@ class Collection {
   // Global Create Method
   create(doc) {
     // Get Collection in which to add new doc
-    let colName = this.constructor.name === "InquiryCOl" ? "inquiries" : null;
+    const colName = this.#getConstructorName(this);
 
     // Get Collection
     const col = this.#getCol(colName) || this.#createColInLocalStorage(colName);
@@ -19,10 +19,23 @@ class Collection {
 
   // Global Get Method
   get(colName) {
-    return this.#getCol(colName);
+    return this.#getCol(colName) || this.#createColInLocalStorage(colName);
+  }
+
+  // Get one
+  getOne(id) {
+    // Get Collection in which to retrieve a doc
+    const colName = this.#getConstructorName(this);
+
+    const col = this.#getCol(colName);
+    return col[id];
   }
 
   // PRIVATE METHODS
+  // Dermine constructor name
+  #getConstructorName(doc) {
+    return this.constructor.name === "InquiryCOl" ? "inquiries" : null;
+  }
   // Update Local storage Method
   #updateLocalStorage(ColName, data) {
     localStorage.setItem(ColName, JSON.stringify(data));

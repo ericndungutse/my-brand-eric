@@ -1,6 +1,6 @@
 "use strict";
 
-import Inquiry from "./model.js";
+import Inquiry from "../model/model.js";
 const contactMeForm = document.querySelector(".contact-me-form");
 
 // Form That submits an inquiry
