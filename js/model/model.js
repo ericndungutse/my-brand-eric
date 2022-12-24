@@ -31,6 +31,21 @@ class Collection {
     return col[id];
   }
 
+  // DELETE doc
+  deleteOne(id) {
+    // Get Collection in which to retrieve a doc
+    const colName = this.#getConstructorName(this);
+
+    // GET COLLECTION
+    const col = this.#getCol(colName);
+
+    // DELETE DOC WITH ID (id)
+    col.splice(id, 1);
+
+    //Update localStorage
+    this.#updateLocalStorage(colName, col);
+  }
+
   // PRIVATE METHODS
   // Dermine constructor name
   #getConstructorName(doc) {

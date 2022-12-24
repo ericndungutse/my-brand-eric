@@ -2,16 +2,7 @@ import { dateFormatter } from "../util.js";
 
 class UI {
   constructor() {
-    this.modal = document.querySelector(".modal");
-    this.overlay = document.querySelector(".overlay");
-    this.document = document.querySelector("html");
     this.inquiriesTableBody = document.querySelector(".inquiries-table__body");
-
-    this.#addEventListeners();
-  }
-
-  openCloseModal() {
-    this.#openCloseModalFunc();
   }
 
   render(parentEl, data) {
@@ -25,7 +16,7 @@ class UI {
 
         this.inquiriesTableBody.insertAdjacentHTML(
           "beforeend",
-          `       <tr data-id="${index}">
+          `       <tr data-inquiry-row="${index}">
                     <td class="center">${index + 1}</td>
                     <td>${name}</td>
                     <td>${email}</td>
@@ -41,10 +32,81 @@ class UI {
     }
   }
 
-  removeEl() {}
+  removeEl(parEl, elId) {
+    // GET PARENT ELEMENT OF THE ELEMENT TO REMOVE
+    const parentEl = document.querySelector(`.${parEl}`);
+
+    // REMOVE ELEMENT
+    parentEl.querySelector(`[data-inquiry-row="${elId}"]`).remove();
+  }
+}
+
+class ModalClass extends UI {
+  constructor() {
+    super();
+    this.modal = document.querySelector(".modal");
+    this.overlay = document.querySelector(".overlay");
+    this.inquiriesTableBody = document.querySelector(".inquiries-table__body");
+    this.#addEventListeners();
+  }
+
+  openCloseModal() {
+    this.#openCloseModalFunc();
+  }
+
+  create(modalName, data) {
+    // CONSTRUCT CUSTOM MODAL
+    if (modalName === "inquiryDetailsModal") {
+      let { name, msg, date } = data;
+      date = dateFormatter(date);
+      // CREATE MARKUP
+      let markup = `
+          <div class="modal__inquiry">
+            <span class="modal__close">&times;</span>
+            <h2 class="heading-primary">${name}</h2>
+            <p class="paragraph">${msg}</p>
+            <p class="paragraph">${date}</p>
+          </div>
+        `;
+
+      // Clear Modal
+      this.modal.innerHTML = "";
+
+      // INSERT MARKUP INSIDE MODAL ELEMENT
+      this.modal.insertAdjacentHTML("afterbegin", markup);
+    } else if (modalName === "deleteConfBoxModal") {
+      // CREATE MARKUP
+      // TODO: CUSTOMIZE DELETE WORNING MESSAGE
+      let markup = `
+          <div class="modal-diolog-box confirm-dialog-box">
+        <div class="modal-header">
+          <i class="fa-solid fa-trash"></i>
+          <h3 class="heading-primary">Delete Inquiry</h3>
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+        <div class="modal-body">
+          <p class="paragraph">Are you sure you want to delete message from ${data}?</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn--tartiary close-modal-confirm-box">No</button>
+          <button class="btn btn--primary yes-delete">Yes</button>
+        </div>
+      </div>
+        `;
+
+      // Clear Modal
+      this.modal.innerHTML = "";
+
+      // INSERT MARKUP INSIDE MODAL ELEMENT
+      this.modal.insertAdjacentHTML("afterbegin", markup);
+    }
+
+    // TO SUPPORT CHAINING
+    return this;
+  }
 
   #addEventListeners() {
-    this.document.addEventListener("click", (e) => {
+    this.modal.addEventListener("click", (e) => {
       if (
         e.target.classList.contains("modal__close") ||
         e.target.classList.contains("close-modal-confirm-box")
@@ -63,10 +125,7 @@ class UI {
       this.overlay.classList.toggle("show-overlay");
     }, 50);
   }
-
-  #buildModal(modName) {}
 }
 
-const ui = new UI();
-
-export default ui;
+export const ui = new UI();
+export const Modal = new ModalClass();
