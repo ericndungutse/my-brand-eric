@@ -85,7 +85,7 @@ class ModalClass extends UI {
           <i class="fa-solid fa-xmark"></i>
         </div>
         <div class="modal-body">
-          <p class="paragraph">Are you sure you want to delete message from ${data}?</p>
+          <p class="paragraph">Are you sure you want to delete message from <b>${data}<b>?</p>
         </div>
         <div class="modal-footer">
           <button class="btn btn--tartiary close-modal-confirm-box">No</button>

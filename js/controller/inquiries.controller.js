@@ -64,6 +64,8 @@ function areSureYouWantToDelete(e) {
 }
 
 /* 4) Confirm Delete Inquiry */
+//  TODO:
+// ALERT TO NOTIFY USER OF SUCCESS DELETE
 function confirDeleteInquiry(e) {
   if (!e.target.classList.contains("yes-delete")) return;
 
@@ -75,7 +77,4 @@ function confirDeleteInquiry(e) {
 
   // REMOVE ELEMENT IN DOM CONTAINING DELETE INQUIRY
   ui.removeEl("inquiries-table__body", state.inquiryToDelete);
-
-  //  TODO:
-  // ALERT TO NOTIFY USER OF SUCCESS DELETE
 }

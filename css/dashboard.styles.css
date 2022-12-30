@@ -65,10 +65,47 @@
   padding: 4rem 12%;
 }
 
+.dashboard-profile {
+  padding: 2rem 12%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+}
+
+.dashboard-profile h3 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-profile .form {
+  width: 35em;
+  min-width: unset;
+  max-width: unset;
+  background-color: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.dashboard-profile .form-input {
+  background-color: var(--grey-color-light);
+  box-shadow: none;
+}
+
+.update-infor-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .dashboard-inquiries__header {
   margin-bottom: 4rem;
   padding: 1.8rem 0;
   border-bottom: 1px solid var(--primary-color);
+}
+
+.dashboard .form-input-group {
+  margin-bottom: 1.5rem;
 }
 
 /* .dashboard {
@@ -103,9 +140,7 @@
 
 
 
-.dashboard .form-input-group {
-  margin-bottom: 1.5rem;
-}
+
 
 .form__photo-upload {
   display: flex;
@@ -280,4 +315,43 @@ thead {
 
 .modal__inquiry h2 {
   width: max-content;
+}
+
+/* Upload Form */
+.form__user-photo {
+  height: 15rem;
+  width: 15rem;
+  border-radius: 50%;
+}
+
+.form-upload-profile-picture {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min-content;
+  gap: 0.3rem;
+}
+
+.upload-profile-picture-label {
+  color: var(--secondary-color);
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 1px solid var(--secondary-color);
+  padding: 3px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.upload-profile-picture-label:hover {
+  background-color: var(--secondary-color);
+  color: #fff;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.form-upload-profile-picture input {
+  visibility: hidden;
+  height: 0.000001px;
 }
