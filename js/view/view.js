@@ -23,7 +23,7 @@ class UI {
                     <td>${date}</td>
                     <td class="table-inquiries-action">
                       <button class="btn btn--secondary btn--small read-inquiry-btn" data-id="${index}">Read</button>
-                      <button class="btn btn--tartiary btn--small delete-inquiry-btn">Delete</button>
+                      <button class="btn btn--tertiary btn--small delete-inquiry-btn">Delete</button>
                     </td>
                 </tr>
             `

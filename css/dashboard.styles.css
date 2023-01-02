@@ -7,7 +7,7 @@
   position: fixed;
   left: 0;
   width: 100%;
-  height: 7rem;
+  height: 6rem;
   padding: 0 3rem;
   box-shadow: 0rem 0.1rem 0.2rem 0.1rem rgba(0, 0, 0, 0.3);
   z-index: 3;
@@ -24,7 +24,7 @@
   position: fixed;
   left: 0;
   bottom: 0;
-  top: 7rem;
+  top: 6rem;
   width: 20rem;
   z-index: 2;
 
@@ -78,21 +78,43 @@
   margin-bottom: 1.5rem;
 }
 
-.dashboard-profile .form {
+.dashboard-settings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding: 2rem 0;
+}
+
+.dashboard-profile .form,
+.dashboard-settings .form {
   width: 35em;
   min-width: unset;
   max-width: unset;
   background-color: none;
   box-shadow: none;
-  padding: 0;
+  padding: 2rem 0;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
 }
 
-.dashboard-profile .form-input {
-  background-color: var(--grey-color-light);
+.dashboard-settings .form {
+  border-bottom: 1px solid var(--grey-color-light);
+}
+
+.dashboard-settings .btn {
+  align-self: center;
+}
+
+.dashboard-profile .form-input,
+.dashboard-settings .form-input {
+  background-color: #eee;
   box-shadow: none;
 }
 
-.update-infor-form-container {
+.update-infor-form-container,
+.update-settings-form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -107,81 +129,6 @@
 .dashboard .form-input-group {
   margin-bottom: 1.5rem;
 }
-
-/* .dashboard {
-  padding: 0 var(--centering-padding);
-}
-
-.dashboard__container {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  box-shadow: 0rem 0.1rem 0.2rem 0.1rem rgba(0, 0, 0, 0.3);
-  border-radius: 0.3rem;
-  overflow: hidden;
-}
-
-
-
-.dashboard__profile,
-.dashboard__blogs-container {
-  padding: 4rem 15rem;
-  background-color: #f9f9f9;
-}
-
-.dashboard__nav-link {
-  display: block;
-  padding: 1rem;
-  color: var(--color-white);
-  font-size: 1.6rem;
-  transition: all 0.3s;
-}
-
-
-
-
-
-
-
-.form__photo-upload {
-  display: flex;
-  align-items: center;
-  font-size: 1.6rem;
-  margin-bottom: 2rem;
-}
-
-.form__user-photo {
-  height: 7.5rem;
-  width: 7.5rem;
-  border-radius: 50%;
-  margin-right: 2rem;
-}
-
-.form__upload {
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
-}
-
-.form__upload + label {
-  color: var(--secondary-color);
-  display: inline-block;
-  text-decoration: none;
-  border-bottom: 1px solid var(--secondary-color);
-  padding: 3px;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
-  cursor: pointer;
-}
-
-.form__upload + label:hover {
-  background-color: var(--secondary-color);
-  color: #fff;
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px);
-} */
 
 /* Manage Blogs */
 /* .dashboard__blogs-container {
