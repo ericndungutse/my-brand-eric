@@ -7,6 +7,12 @@ class Collection {
     // Get Collection
     const col = this.#getCol(colName) || this.#createColInLocalStorage(colName);
 
+    if (col.length > 0) {
+      doc.id = col[col.length - 1].id + 1;
+    } else {
+      doc.id = col.length + 1;
+    }
+
     // Push new document into the collection
     col.push(doc);
 
@@ -28,7 +34,10 @@ class Collection {
     const colName = this.#getConstructorName(this);
 
     const col = this.#getCol(colName);
-    return col[id];
+
+    const doc = col.find((c) => +c.id === +id);
+
+    return doc;
   }
 
   // DELETE doc
@@ -40,7 +49,8 @@ class Collection {
     const col = this.#getCol(colName);
 
     // DELETE DOC WITH ID (id)
-    col.splice(id, 1);
+    const pos = col.findIndex((c) => +c.id === +id);
+    col.splice(pos, 1);
 
     //Update localStorage
     this.#updateLocalStorage(colName, col);
@@ -48,8 +58,14 @@ class Collection {
 
   // PRIVATE METHODS
   // Dermine constructor name
-  #getConstructorName(doc) {
-    return this.constructor.name === "InquiryCOl" ? "inquiries" : null;
+  #getConstructorName() {
+    const col = this.constructor.name;
+    switch (col) {
+      case "InquiryCOl":
+        return "inquiries";
+      case "BlogCol":
+        return "blogs";
+    }
   }
   // Update Local storage Method
   #updateLocalStorage(ColName, data) {
@@ -73,7 +89,11 @@ class InquiryCOl extends Collection {
     super();
   }
 }
+class BlogCol extends Collection {
+  constructor() {
+    super();
+  }
+}
 
-const Inquiry = new InquiryCOl();
-
-export default Inquiry;
+export const Inquiry = new InquiryCOl();
+export const Blog = new BlogCol();

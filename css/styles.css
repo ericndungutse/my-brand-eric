@@ -12,10 +12,14 @@
 :root {
   --primary-color: rgb(247, 119, 55);
   --secondary-color: rgb(254, 48, 138);
+
   --grey-color-light: #ccc;
+  --grey-color-light-2: #f1f3f4;
+  --grey-hover: #2021241a;
+
   --grey-color-dark: #585858;
-  --grey-color-light-2: #f0f0f0;
   --grey-color-dark-2: #ddd;
+
   --color-black: #111010;
   --color-white: #fff;
   --centering-padding: 14rem;
@@ -29,6 +33,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+*::placeholder {
+  color: var(--grey-color-dark);
 }
 
 html {
@@ -74,6 +82,14 @@ body {
 
 .center {
   text-align: center !important;
+}
+
+.dropdown {
+  display: none;
+}
+
+.show-dropdown {
+  display: block;
 }
 
 /* Tablet Landscape */

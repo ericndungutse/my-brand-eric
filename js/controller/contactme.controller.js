@@ -1,6 +1,6 @@
 "use strict";
 
-import Inquiry from "../model/model.js";
+import { Inquiry } from "../model/model.js";
 const contactMeForm = document.querySelector(".contact-me-form");
 
 // Form That submits an inquiry
@@ -18,7 +18,9 @@ contactMeForm.addEventListener("submit", (e) => {
   };
 
   // Add enquiry obj to local storage.
-  Inquiry.create(inquiry);
+
+  const newInquiry = Inquiry.create(inquiry);
+  console.log(newInquiry);
 
   // Reset inputs of the form
   formElements["name"].value = "";
