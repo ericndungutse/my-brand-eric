@@ -8,6 +8,7 @@
 @import url(/css/contactme.styles.css);
 @import url(/css/blogs.styles.css);
 @import url(/css/dashboard.styles.css);
+@import url(/css/blog-page.styles.css);
 
 :root {
   --primary-color: rgb(247, 119, 55);

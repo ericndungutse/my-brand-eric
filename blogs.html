@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="/img/favicon.png" />
     <link rel="stylesheet" href="/css/styles.css" />
-    <title>About | Eric</title>
+    <title>News | Eric</title>
   </head>
   <body>
     <!-- HEADER -->
@@ -18,10 +18,10 @@
       </div>
       <nav class="header__nav">
         <a href="/index.html" class="link header__nav-link">Home</a>
-        <a href="#" class="link header__nav-link active">About Me</a>
+        <a href="/about.html" class="link header__nav-link">About Me</a>
         <a href="/skills.html" class="link header__nav-link">Skills</a>
         <a href="/portofolio.html" class="link header__nav-link">My Work</a>
-        <a href="/blogs.html" class="link header__nav-link">Blogs</a>
+        <a href="/blog.html" class="link header__nav-link active">Blogs</a>
         <a href="/contactme.html" class="link header__nav-link">Contact Me</a>
       </nav>
       <div class="header__user-nav">
@@ -43,12 +43,10 @@
       <spam class="close-mobile-nav">&times;</spam>
       <nav class="mobile-nav__nav">
         <a href="/index.html" class="link mobile-nav__nav-link">Home</a>
-        <a href="/about.html" class="link mobile-nav__nav-link active"
-          >About Me</a
-        >
+        <a href="/about.html" class="link mobile-nav__nav-link">About Me</a>
         <a href="/skills.html" class="link mobile-nav__nav-link">Skills</a>
         <a href="/portofolio.html" class="link mobile-nav__nav-link">My Work</a>
-        <a href="/blogs.html" class="link mobile-nav__nav-link">Blogs</a>
+        <a href="/blog.html" class="link mobile-nav__nav-link active">Blogs</a>
         <a href="/contactme.html" class="link mobile-nav__nav-link"
           >Contact Me</a
         >
@@ -60,37 +58,65 @@
       </div>
     </div>
 
-    <!-- ABOUT ME CONTENT -->
-    <section class="flex-section about-me">
-      <div class="about-me__text">
-        <h1 class="heading-primary">
-          <spam class="top">Eric Tuyizere</spam>Ndungutse
-        </h1>
-        <p class="paragraph">
-          I am a student at University of Rwanda, studying information
-          technology. I am enthusiastic about software development.
-        </p>
-        <p class="paragraph">
-          I focus on Javascript language, with its associated technologies -
-          ReactJS and NodeJS/ExpressJS. On data side, I use MongoDB, a popular
-          noSql database.
-        </p>
-        <p class="paragraph">
-          Up on completion of college, I wish to create digital solutions to the
-          issues the community that I belong in is facing.
-        </p>
+    <!-- BLOGS -->
+    <h2 class="heading-primary blogs__heading">NEWS</h2>
+    <section class="grid-container blogs">
+      <div class="blog">
+        <img
+          src="/img/work images/ceata.png"
+          class="blog__image"
+          alt="Blog Image"
+        />
 
-        <a href="#" class="btn btn--primary btn-small btn--link"
-          >Read More on CV</a
-        >
+        <div class="blog__content">
+          <p class="paragraph blog__text">
+            CEATA Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
+            et laborum inventore.
+          </p>
+
+          <a href="#" class="btn btn--secondary btn-small btn--link"
+            >Read More</a
+          >
+        </div>
       </div>
+      <div class="blog">
+        <img
+          src="/img/work images/ceata.png"
+          class="blog__image"
+          alt="Blog Image"
+        />
 
-      <div class="about-me__image-container">
-        <img src="/img/aboutme.jpg" alt="Eric Image" class="about-me__image" />
+        <div class="blog__content">
+          <p class="paragraph blog__text">
+            CEATA Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
+            et laborum inventore.
+          </p>
+
+          <a href="#" class="btn btn--secondary btn-small btn--link"
+            >Read More</a
+          >
+        </div>
+      </div>
+      <div class="blog">
+        <img
+          src="/img/work images/ceata.png"
+          class="blog__image"
+          alt="Blog Image"
+        />
+
+        <div class="blog__content">
+          <p class="paragraph blog__text">
+            CEATA Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
+            et laborum inventore.
+          </p>
+
+          <a href="#" class="btn btn--secondary btn-small btn--link"
+            >Read More</a
+          >
+        </div>
       </div>
     </section>
 
-    <!-- SOCIAL NETWORK LINKS -->
     <aside class="social-links">
       <a href="#">
         <img
@@ -132,7 +158,6 @@
 
     <!-- FOOTER -->
     <footer class="footer"></footer>
-
     <svg class="svg">
       <clipPath id="footer-clip" clipPathUnits="objectBoundingBox">
         <path
@@ -140,6 +165,7 @@
         ></path>
       </clipPath>
     </svg>
+
     <script src="./js/script.js"></script>
   </body>
 </html>
