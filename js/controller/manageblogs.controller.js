@@ -15,11 +15,11 @@ const modal = document.querySelector(".modal");
 // Get Blogs when Contents gets loaded And Update State
 document.addEventListener("DOMContentLoaded", renderBlogs);
 
-// Create Blog in LocalStorage
-createModalForm.addEventListener("submit", createBlog);
-
 // Open Blog Modal
 createBlogBtn.addEventListener("click", openBlogModal);
+
+// Save Blog in LocalStorage
+document.addEventListener("submit", createBlog);
 
 // Create and Open Blog Menu
 document.addEventListener("click", (e) => {
@@ -46,6 +46,44 @@ document.addEventListener("click", (e) => {
   }
 });
 
+// Open Update Blog Modal
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("blog__menu-update-btn")) {
+    // Get ID of the Blog
+    const blogId =
+      e.target.parentElement.parentElement.parentElement.dataset.id;
+
+    // Get Blog based on ID
+    const blog = Blog.getOne(blogId);
+
+    // CREATE & OPEN Modal
+    Modal.create("updateBlogModal", blog).openCloseModal();
+  }
+});
+
+// Update
+//  TODO: Update Blog
+document.addEventListener("submit", (e) => {
+  if (!e.target.classList.contains("update-blog-form")) return false;
+  const formElements = e.target.elements;
+
+  // Create inquiry object
+  const newBlogData = {
+    title: formElements["title"].value,
+    text: formElements["text"].value,
+    img: formElements["img"].value,
+  };
+
+  const blogs = Blog.UpdateOne(e.target.dataset.id, newBlogData);
+
+  console.log(blogs);
+
+  BlogUI.renderBlogs(blogs);
+
+  // Close Modal
+  Modal.openCloseModal();
+});
+
 /* Confirm Delete Inquiry */
 modal.addEventListener("click", confirDeleteBlog);
 
@@ -59,7 +97,8 @@ function renderBlogs() {
 // Create Blog
 function createBlog(e) {
   e.preventDefault();
-  const formElements = createModalForm.elements;
+  if (!e.target.classList.contains("create-blog-form")) return false;
+  const formElements = e.target.elements;
 
   // Create inquiry object
   const blog = {
@@ -90,7 +129,7 @@ function createBlog(e) {
 // Open Blog Modal
 function openBlogModal() {
   // OPEN Modal
-  Modal.openCloseModal();
+  Modal.create("createBlogModal").openCloseModal();
 }
 
 /* Open Delete Blog Confirm Alert */

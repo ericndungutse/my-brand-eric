@@ -365,23 +365,21 @@ thead {
   height: 0.000001px;
 }
 
-.modal-create-blog {
+.blog-modal {
   width: 50rem;
   background-color: #fff;
-}
-
-.modal-create-blog h3 {
   padding: 2rem;
-  margin-bottom: -2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
-.modal-create-blog .btn {
+.blog-modal .btn {
   align-self: center;
   min-width: 12rem;
-  margin-top: 2rem;
 }
 
-.modal-create-blog label {
+.blog-modal label {
   color: var(--color-black);
 }
 
@@ -391,4 +389,5 @@ thead {
   min-width: unset;
   max-width: unset;
   box-shadow: unset;
+  padding: unset;
 }

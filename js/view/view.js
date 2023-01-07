@@ -56,12 +56,13 @@ class UI {
         </div>
       </div>
         `;
-        break;
 
       case "createBlogModal":
-        return ` <div class="modal-create-blog">
+        return `
+         <span class="modal__close">×</span>
+         <div class="blog-modal">
         <h3 class="heading-primary">Create Blog</h3>
-        <form action="" class="form blogForm">
+        <form action="" class="form blogForm create-blog-form">
           <div class="form-input-group">
             <label for="" class="form-input-label">Title</label>
             <input
@@ -70,23 +71,57 @@ class UI {
               id=""
               class="form-input"
               placeholder="Title..."
+              
             />
           </div>
 
           <div class="form-input-group">
+            <label for="" class="form-input-label">Text</label>
+            <textarea name="text" id="" cols="30" rows=7" class="form-textarea" placeholder="Blog Text...."></textarea>
+          </div>
+
+          <div class="form-input-group">
             <label for="" class="form-input-label">Image Icon</label>
-            <textarea name="" id="" cols="30" rows="auto" class="form-textarea">
-Blog Text....</textarea
+            <input type="file" name="img" id="" placeholder="Image..." />
+          </div>
+          <button class="btn btn--primary btn--small update-blog-btn">Post</button>
+        </form>
+        </div>
+        `;
+
+      case "updateBlogModal":
+        return `
+         <span class="modal__close">×</span>
+         <div class="blog-modal">
+        <h3 class="heading-primary">Update Blog</h3>
+        <form action="" class="form blogForm update-blog-form" data-id="${data.id}">
+          <div class="form-input-group">
+            <label for="" class="form-input-label">Title</label>
+            <input
+              type="text"
+              name="title"
+              id=""
+              class="form-input"
+              placeholder="Title..."
+              value="${data.title}"
+            />
+          </div>
+
+          <div class="form-input-group">
+            <label for="" class="form-input-label">Text</label>
+            <textarea name="text" id="" cols="30" rows="7" class="form-textarea" >
+${data.text}</textarea
             >
           </div>
 
           <div class="form-input-group">
-            <label for="" class="form-input-label"></label>
-            <input type="file" name="" id="" placeholder="Image..." />
+            <label for="" class="form-input-label">Image Icon</label>
+            <input type="file" name="img" id="" placeholder="Image..." />
           </div>
-          <button class="btn btn--primary btn--small post-blog-btn">Post</button>
+          <button class="btn btn--primary btn--small update-blog-btn">Update</button>
         </form>
-      </div>`;
+        </div>
+      `;
 
       case "dashboardBlog":
         return `<div class="blog" id="dashboard-blog" data-id="${data.id}">
@@ -193,6 +228,17 @@ class ModalClass extends UI {
       this.modal.insertAdjacentHTML("afterbegin", markup);
     }
 
+    if (modalName === "updateBlogModal") {
+      // CREATE MARKUP
+      let markup = this._buildMarkup("updateBlogModal", data);
+
+      // Clear Modal
+      this.modal.innerHTML = "";
+
+      // INSERT MARKUP INSIDE MODAL ELEMENT
+      this.modal.insertAdjacentHTML("afterbegin", markup);
+    }
+
     // TO SUPPORT CHAINING
     return this;
   }
@@ -256,6 +302,8 @@ class BlogClass extends UI {
 
   renderBlogs(data) {
     if (data.length === 0) return alert("No Document found");
+
+    this.blogsContainer.innerHTML = "";
 
     data.forEach((blog) => {
       let { title, date, user, id } = blog;

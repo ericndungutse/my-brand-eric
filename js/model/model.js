@@ -1,7 +1,7 @@
 class Collection {
   // Global Create Method
   create(doc) {
-    // Get Collection in which to add new doc
+    // Get Collection Name in which to add new doc
     const colName = this.#getConstructorName(this);
 
     // Get Collection
@@ -38,6 +38,26 @@ class Collection {
     const doc = col.find((c) => +c.id === +id);
 
     return doc;
+  }
+
+  // Update One
+  UpdateOne(id, data) {
+    // Get Collection in which to retrieve a doc
+    const colName = this.#getConstructorName(this);
+
+    const col = this.get(colName);
+    const doc = this.getOne(id);
+
+    const index = col.findIndex((el) => +el.id === +id);
+    const updatedDoc = { ...doc, ...data };
+
+    col.splice(index, 1, updatedDoc);
+
+    // Update Localstorage
+    this.#updateLocalStorage(colName, col);
+
+    // Return the created Document
+    return col;
   }
 
   // DELETE doc
