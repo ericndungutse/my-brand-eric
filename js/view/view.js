@@ -167,6 +167,39 @@ ${data.text}</textarea
               >
             </div>
           </div>`;
+
+      case "blogspage":
+        return `<div class="blog">
+            <div class="blog__header">
+              <div class="blog__user-time">
+                <img
+                  src="./img/default.jpg"
+                  class="blog__user-image"
+                  alt="user_image"
+                />
+
+                <div class="blog__user-names-time">
+                  <p class="blog__user-names">${data.user.name}</p>
+                  <p class="blog__time">${data.date}</p>
+                </div>
+              </div>
+            </div>
+        <img
+          src="/img/work images/ceata.png"
+          class="blog__image"
+          alt="Blog Image"
+        />
+
+        <div class="blog__content">
+          <p class="paragraph blog__text">
+            ${data.title}
+          </p>
+
+          <a href="/blogs/${data.id}" class="btn btn--secondary btn-small btn--link"
+            >Read More</a
+          >
+        </div>
+      </div>`;
       default:
         break;
     }
@@ -297,31 +330,30 @@ class TableClass extends UI {
 class BlogClass extends UI {
   constructor() {
     super();
-    this.blogsContainer = document.querySelector(".dashboard__blogs");
   }
 
-  renderBlogs(data) {
+  renderBlogs(parentEl, data, type) {
     if (data.length === 0) return alert("No Document found");
 
-    this.blogsContainer.innerHTML = "";
+    parentEl.innerHTML = "";
 
     data.forEach((blog) => {
       let { title, date, user, id } = blog;
 
       date = dateFormatter(date);
 
-      const markup = this._buildMarkup("dashboardBlog", {
+      const markup = this._buildMarkup(`${type}`, {
         title,
         date,
         user,
         id,
       });
 
-      this.blogsContainer.insertAdjacentHTML("beforeend", markup);
+      parentEl.insertAdjacentHTML("beforeend", markup);
     });
   }
 
-  insertBlog(blog) {
+  insertBlog(parentEl, blog) {
     let { title, date, user, id } = blog;
 
     date = dateFormatter(date);
@@ -333,7 +365,7 @@ class BlogClass extends UI {
       id,
     });
 
-    this.blogsContainer.insertAdjacentHTML("afterbegin", markup);
+    parentEl.insertAdjacentHTML("afterbegin", markup);
   }
 
   openMenu(e) {

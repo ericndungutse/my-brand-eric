@@ -188,6 +188,7 @@
 .form-textarea {
   width: 100%;
   padding: 1.2rem 1rem;
+  overflow: scroll;
   margin: 0.8rem 0;
   display: inline-block;
   border: 1px solid #ccc;

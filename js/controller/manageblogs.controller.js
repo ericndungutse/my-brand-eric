@@ -8,8 +8,8 @@ const state = {
 };
 
 const createBlogBtn = document.querySelector(".create-blog-btn");
-const createModalForm = document.querySelector(".blogForm");
 const modal = document.querySelector(".modal");
+const blogsContainer = document.querySelector(".dashboard__blogs");
 
 /* EVENT LISTENERS */
 // Get Blogs when Contents gets loaded And Update State
@@ -62,7 +62,6 @@ document.addEventListener("click", (e) => {
 });
 
 // Update
-//  TODO: Update Blog
 document.addEventListener("submit", (e) => {
   if (!e.target.classList.contains("update-blog-form")) return false;
   const formElements = e.target.elements;
@@ -76,9 +75,7 @@ document.addEventListener("submit", (e) => {
 
   const blogs = Blog.UpdateOne(e.target.dataset.id, newBlogData);
 
-  console.log(blogs);
-
-  BlogUI.renderBlogs(blogs);
+  BlogUI.renderBlogs(blogsContainer, blogs, "dashboardBlog");
 
   // Close Modal
   Modal.openCloseModal();
@@ -91,7 +88,8 @@ modal.addEventListener("click", confirDeleteBlog);
 // Get and Render blogs
 function renderBlogs() {
   const blogs = Blog.get("blogs");
-  BlogUI.renderBlogs(blogs);
+
+  BlogUI.renderBlogs(blogsContainer, blogs, "dashboardBlog");
 }
 
 // Create Blog
@@ -116,7 +114,7 @@ function createBlog(e) {
   const newBlog = Blog.create(blog);
 
   // Update UI with new BLog
-  BlogUI.insertBlog(newBlog);
+  BlogUI.insertBlog(blogsContainer, newBlog);
   // Reset inputs of the form
   formElements["title"].value = "";
   formElements["text"].value = "";
