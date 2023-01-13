@@ -1,10 +1,6 @@
 import { dateFormatter } from "../util.js";
 
 class UI {
-  constructor() {
-    this.inquiriesTableBody = document.querySelector(".inquiries-table__body");
-  }
-
   removeEl(parEl, elId) {
     // GET PARENT ELEMENT OF THE ELEMENT TO REMOVE
     const parentEl = document.querySelector(`.${parEl}`);
@@ -28,7 +24,19 @@ class UI {
                       <button class="btn btn--tertiary btn--small delete-inquiry-btn">Delete</button>
                     </td>
                 </tr>`;
-        break;
+
+      case "blogRow":
+        return `
+                  <tr data-id="${data.id}">
+                    <td class="center">${data.id}</td>
+                    <td class="sender-name">${data.title}</td>
+                    <td>${data.date}</td>
+                    <td class="table-inquiries-action">
+                      <button class="btn btn--secondary btn--small blog__menu-update-btn">Update</button>
+                      <button class="btn btn--tertiary btn--small blog__menu-delete-btn">Delete</button>
+                    </td>
+                </tr>
+                  `;
 
       case "inquiryDetailsModal":
         return `<div class="modal__inquiry">
@@ -48,7 +56,7 @@ class UI {
           <i class="fa-solid fa-xmark"></i>
         </div>
         <div class="modal-body">
-          <p class="paragraph">Are you sure you want to delete message from <b>${data}<b>?</p>
+          <p class="paragraph"><b>${data}<b>?</p>
         </div>
         <div class="modal-footer">
           <button class="btn btn--tertiary close-modal-confirm-box">No</button>
@@ -80,9 +88,10 @@ class UI {
             <textarea name="text" id="" cols="30" rows=7" class="form-textarea" placeholder="Blog Text...."></textarea>
           </div>
 
-          <div class="form-input-group">
-            <label for="" class="form-input-label">Image Icon</label>
-            <input type="file" name="img" id="" placeholder="Image..." />
+          <div class="form-input-group blog-image-input-group">
+            <label for="blogImagePicker" class="form-input-label blog-image-label"><ion-icon name="image-outline" class="date-picker-icon"></ion-icon><span class="blog-image-label-text">Choose Image</span>
+            </label><input type="file" name="img" class="blog-image-picker" id="blogImagePicker" placeholder="Image..." />
+           <span class="upload-progress"></span>
           </div>
           <button class="btn btn--primary btn--small update-blog-btn">Post</button>
         </form>
@@ -114,9 +123,10 @@ ${data.text}</textarea
             >
           </div>
 
-          <div class="form-input-group">
-            <label for="" class="form-input-label">Image Icon</label>
-            <input type="file" name="img" id="" placeholder="Image..." />
+          <div class="form-input-group blog-image-input-group">
+            <label for="blogImagePicker" class="form-input-label blog-image-label"><ion-icon name="image-outline" class="date-picker-icon"></ion-icon><span class="blog-image-label-text">Choose Image</span>
+            </label><input type="file" name="img" class="blog-image-picker" id="blogImagePicker" placeholder="Image..." />
+           <span class="upload-progress"></span>
           </div>
           <button class="btn btn--primary btn--small update-blog-btn">Update</button>
         </form>
@@ -127,8 +137,8 @@ ${data.text}</textarea
         return `<div class="blog" id="dashboard-blog" data-id="${data.id}">
             <div class="dropdown">
               <div class="blog__menu">
-                <span class="blog__menu-item blog__menu-update-btn">Edit</span>
-                <span class="blog__menu-item blog__menu-delete-btn">Delete</span>
+                <span class="blog__menu-item blog__menu-update-btn"><ion-icon name="create-outline"></ion-icon> Edit</span>
+                <span class="blog__menu-item blog__menu-delete-btn"><ion-icon name="trash-outline"></ion-icon> Delete</span>
               </div>
             </div>
             <div class="blog__header">
@@ -151,11 +161,13 @@ ${data.text}</textarea
                 <spam class="blog__menu-icon-dot">.</spam>
               </div>
             </div>
+            <div class="blog__image-container">
             <img
-              src="/img/work images/express 2.png"
+              src="/img/psud.png"
               class="blog__image"
               alt="Blog Image"
             />
+            </div>
 
             <div class="blog__content">
               <p class="paragraph blog__text">
@@ -184,11 +196,15 @@ ${data.text}</textarea
                 </div>
               </div>
             </div>
-        <img
-          src="/img/work images/ceata.png"
-          class="blog__image"
-          alt="Blog Image"
-        />
+
+          <div class="blog__image-container">
+          
+          <img
+            src="${data.imgUrl}"
+            class="blog__image"
+            alt="Blog Image"
+          />
+          </div>
 
         <div class="blog__content">
           <p class="paragraph blog__text">
@@ -306,24 +322,35 @@ class TableClass extends UI {
     super();
   }
 
-  renderRow(data) {
+  renderRows(parentEl, data, blogs = false) {
     if (data.length === 0) return alert("No Document found");
 
-    data.forEach((inquiry, index) => {
-      let { name, email, date, id } = inquiry;
+    parentEl.innerHTML = "";
 
-      date = dateFormatter(date);
+    let markup;
 
-      const markup = this._buildMarkup("inquiryRow", {
-        name,
-        email,
-        date,
-        id,
-        index,
-      });
+    const rowType = blogs === true ? "blogRow" : "inquiryRow";
 
-      this.inquiriesTableBody.insertAdjacentHTML("beforeend", markup);
+    data.forEach((datum, index) => {
+      let obj = { ...datum };
+
+      obj.date = dateFormatter(obj.date);
+      obj.index = index;
+
+      markup = this._buildMarkup(`${rowType}`, obj);
+      parentEl.insertAdjacentHTML("beforeend", markup);
     });
+  }
+
+  insertRow(parentEl, data, blog = false) {
+    const rowType = blog === true ? "blogRow" : "inquiryRow";
+
+    let obj = { ...data };
+
+    obj.date = dateFormatter(obj.date);
+
+    const markup = this._buildMarkup(`${rowType}`, obj);
+    parentEl.insertAdjacentHTML("beforeend", markup);
   }
 }
 
@@ -338,7 +365,7 @@ class BlogClass extends UI {
     parentEl.innerHTML = "";
 
     data.forEach((blog) => {
-      let { title, date, user, id } = blog;
+      let { title, date, user, id, imgUrl } = blog;
 
       date = dateFormatter(date);
 
@@ -347,6 +374,7 @@ class BlogClass extends UI {
         date,
         user,
         id,
+        imgUrl,
       });
 
       parentEl.insertAdjacentHTML("beforeend", markup);

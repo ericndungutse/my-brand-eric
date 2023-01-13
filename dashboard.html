@@ -57,27 +57,57 @@
       <!-- Dashboard Navigation -->
       <aside class="dashboard-nav-container">
         <nav class="dashboard__nav">
-          <a href="./index.html" class="dashboard__nav-link link">Home</a>
+          <a href="./index.html" class="dashboard__nav-link link"
+            ><ion-icon
+              name="home-outline"
+              class="dashboard-side-nav-icon"
+            ></ion-icon>
+            Home</a
+          >
           <a
             href="./dashboard.html"
             class="dashboard__nav-link dashboard__active link"
+            ><ion-icon
+              name="person-outline"
+              class="dashboard-side-nav-icon"
+            ></ion-icon
             >Profile</a
           >
           <a href="./manageblogs.html" class="dashboard__nav-link link"
+            ><ion-icon
+              name="newspaper-outline"
+              class="dashboard-side-nav-icon"
+            ></ion-icon
             >Blogs</a
           >
           <a href="./inquiries.html" class="dashboard__nav-link link"
-            >Inqueries</a
+            ><ion-icon
+              name="mail-outline"
+              class="dashboard-side-nav-icon"
+            ></ion-icon>
+            Inqueries</a
           >
-          <a href="./settings.html" class="dashboard__nav-link link">Setting</a>
-          <a href="#" class="dashboard__nav-link link">Logout</a>
+          <a href="./settings.html" class="dashboard__nav-link link"
+            ><ion-icon
+              name="settings-outline"
+              class="dashboard-side-nav-icon"
+            ></ion-icon>
+            Setting</a
+          >
+          <a href="#" class="dashboard__nav-link link"
+            ><ion-icon
+              name="log-out-outline"
+              class="dashboard-side-nav-icon"
+            ></ion-icon>
+            Logout</a
+          >
         </nav>
       </aside>
 
       <!-- Dashboard Content -->
       <section class="dashboard-content">
         <div class="dashboard-profile">
-<h3 class="heading-primary">Account Information</h3>
+          <h3 class="heading-primary">Account Information</h3>
           <form action="" class="form-upload-profile-picture">
             <img
               src="./img/dashboard-profile.png"
@@ -92,7 +122,6 @@
           </form>
 
           <div class="update-infor-form-container">
-            
             <form action="" class="form">
               <div class="form-input-group">
                 <label for="" class="form-input-label">Name</label>
@@ -136,6 +165,15 @@
         </div>
       </section>
     </main>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
 
     <script src="./js/script.js"></script>
   </body>

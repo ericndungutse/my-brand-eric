@@ -48,6 +48,9 @@
   color: var(--color-white);
   font-size: 1.6rem;
   transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .dashboard__nav-link:not(:last-child) {
@@ -142,7 +145,7 @@
 .dashboard__blogs-container {
   display: flex;
   flex-direction: column;
-  padding: 4rem 10rem;
+  padding: 2rem 10rem;
   gap: 5rem;
 }
 
@@ -163,11 +166,6 @@
   max-width: 33.333%;
   flex: 1;
   position: relative;
-}
-
-.dashboard__blogs .blog .blog__image {
-  height: 25rem;
-  object-fit: cover;
 }
 
 .blog__header {
@@ -244,10 +242,19 @@ spam.blog__menu-icon-dot {
   border-radius: var(--border-radius);
   font-weight: 500;
   cursor: pointer;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
 }
 
 .blog__menu-item:hover {
   background-color: var(--grey-hover);
+}
+
+.blog__menu-item ion-icon {
+  font-size: 2.3rem;
+  transform: translateY(-0.8px);
+  --ionicon-stroke-width: 3rem;
 }
 
 /* TABLE */
@@ -275,6 +282,7 @@ spam.blog__menu-icon-dot {
 .inquiries-table td {
   font-size: 1.1rem;
   color: var(--color-black);
+  text-align: center;
 }
 
 .inquiries-table tr:nth-child(even) {
@@ -288,7 +296,7 @@ spam.blog__menu-icon-dot {
 .inquiries-table th {
   padding-top: 1.2rem;
   padding-bottom: 1.2rem;
-  text-align: left;
+
   color: var(--color-white);
   font-size: 1.4rem;
 }
@@ -390,4 +398,41 @@ thead {
   max-width: unset;
   box-shadow: unset;
   padding: unset;
+}
+
+.dashboard-side-nav-icon {
+  font-size: 2rem;
+  color: var(--color-whites);
+  transform: translateY(-0.8px);
+}
+
+.blog-image-picker {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.blog-image-label {
+  color: var(--color-black);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 0.5rem;
+  transition: all 0.5s;
+}
+
+.date-picker-icon {
+  display: flex;
+  font-size: 3rem;
+  cursor: pointer;
+  color: var(--secondary-color);
+}
+
+.blog-image-label:hover {
+  background-color: var(--grey-color-light-2);
 }

@@ -11,5 +11,6 @@ document.addEventListener("DOMContentLoaded", renderBlogs);
 // Get and Render blogs
 function renderBlogs() {
   const blogs = Blog.get("blogs");
+
   BlogUI.renderBlogs(blogsContainer, blogs, "blogspage");
 }

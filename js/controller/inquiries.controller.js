@@ -28,7 +28,7 @@ modal.addEventListener("click", confirDeleteInquiry);
 /* 1) RENDER INQUIRIES  */
 function renderInquiries() {
   const inquiries = Inquiry.get("inquiries");
-  Table.renderRow(inquiries);
+  Table.renderRows(inquiriesTableBody, inquiries);
 }
 
 /* 2) RENDER DETAIL MODAL */
@@ -51,14 +51,11 @@ function areSureYouWantToDelete(e) {
     //Get the id of inquiry to delete
     const inquiryToDelete = e.target.parentElement.parentElement.dataset.id;
 
-    // Get inquiry based on ID
-    const sender =
-      e.target.parentElement.parentElement.querySelector(
-        ".sender-name"
-      ).textContent;
-
     // CREATE & OPEN Modal
-    Modal.create("deleteConfBoxModal", sender).openCloseModal();
+    Modal.create(
+      "deleteConfBoxModal",
+      "Are you sure you want to delete this message"
+    ).openCloseModal();
 
     state.inquiryToDelete = inquiryToDelete;
   }

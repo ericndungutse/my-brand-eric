@@ -188,13 +188,35 @@
 .form-textarea {
   width: 100%;
   padding: 1.2rem 1rem;
-  overflow: scroll;
   margin: 0.8rem 0;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: var(--border-radius);
   outline: none;
   transition: all 0.4s;
+}
+
+.spinner {
+  display: block;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 100%;
+  border: 2px solid var(--grey-color-light-2);
+  border-right: 2px solid var(--secondary-color);
+  border-bottom: 2px solid var(--secondary-color);
+  border-left: 2px solid var(--secondary-color);
+  margin: 0 auto;
+
+  animation-name: infiniteRotate;
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  animation-iteration-count: infinite;
+}
+
+@keyframes infiniteRotate {
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Tablet Potrait */
