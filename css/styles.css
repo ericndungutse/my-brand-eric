@@ -1,14 +1,14 @@
-@import url(/css/components.styles.css);
-@import url(/css/aboutme.styles.css);
-@import url(/css/layout.css);
-@import url(/css/homepage.styles.css);
-@import url(/css/skills.styles.css);
-@import url(/css/portofolio.styles.css);
-@import url(/css/login.styles.css);
-@import url(/css/contactme.styles.css);
-@import url(/css/blogs.styles.css);
-@import url(/css/dashboard.styles.css);
-@import url(/css/blog-page.styles.css);
+@import "/css/components.styles.css";
+@import "/css/aboutme.styles.css";
+@import "/css/layout.css";
+@import "/css/homepage.styles.css";
+@import "/css/skills.styles.css";
+@import "/css/portofolio.styles.css";
+@import "/css/login.styles.css";
+@import "/css/contactme.styles.css";
+@import "/css/blogs.styles.css";
+@import "/css/dashboard.styles.css";
+@import "/css/blog-page.styles.css";
 
 :root {
   --primary-color: rgb(247, 119, 55);
