@@ -1235,9 +1235,8 @@ thead {
   padding: 1.2rem 1rem;
   margin: 0.8rem 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: var(--border-radius);
-  outline: none;
   transition: all 0.4s;
 }
 
@@ -1610,7 +1609,8 @@ thead {
   opacity: 1;
 }
 
-.input-icon-container input {
+.input-icon-container input,
+textarea {
   grid-column: 1 / -1;
 }
 
