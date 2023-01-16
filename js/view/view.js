@@ -77,7 +77,7 @@ class UI {
               type="text"
               name="title"
               id=""
-              class="form-input"
+              class="form-input inputInitial"
               placeholder="Title..."
               
             />
@@ -85,7 +85,7 @@ class UI {
 
           <div class="form-input-group">
             <label for="" class="form-input-label">Text</label>
-            <textarea name="text" id="" cols="30" rows=7" class="form-textarea" placeholder="Blog Text...."></textarea>
+            <textarea name="text" id="" cols="30" rows=7" class="form-textarea inputInitial" placeholder="Blog Text...."></textarea>
           </div>
 
           <div class="form-input-group blog-image-input-group">
@@ -110,7 +110,7 @@ class UI {
               type="text"
               name="title"
               id=""
-              class="form-input"
+              class="form-input inputInitial"
               placeholder="Title..."
               value="${data.title}"
             />
@@ -118,7 +118,7 @@ class UI {
 
           <div class="form-input-group">
             <label for="" class="form-input-label">Text</label>
-            <textarea name="text" id="" cols="30" rows="7" class="form-textarea" >
+            <textarea name="text" id="" cols="30" rows="7" class="form-textarea inputInitial" >
 ${data.text}</textarea
             >
           </div>
