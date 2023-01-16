@@ -36,6 +36,10 @@ contactMeForm.addEventListener("submit", (e) => {
   formElements["name"].value = "";
   formElements["email"].value = "";
   formElements["msg"].value = "";
+
+  initialInputStyles(name);
+  initialInputStyles(email);
+  initialInputStyles(message);
 });
 
 // VALIDATION
