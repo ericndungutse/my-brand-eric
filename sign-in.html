@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="img/favicon.png" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/validation.css" />
     <title>Sigin | Eric</title>
   </head>
   <body>
@@ -63,23 +64,49 @@
 
         <div class="form-input-group">
           <label for="" class="form-input-label">Email</label>
-          <input
-            type="email"
-            class="form-input"
-            placeholder="Enter your Email..."
-            required
-          />
+          <div class="input-icon-container">
+            <input
+              type="email"
+              class="form-input inputInitial"
+              name="email"
+              id="signinEmail"
+              placeholder="Enter your Email..."
+              required
+              autocomplete="off"
+            />
+
+            <ion-icon
+              name="close-circle-outline"
+              class="login-input-icon invalid-icon"
+            ></ion-icon>
+
+            <span class="validation-msg"> Enter a valid email </span>
+          </div>
         </div>
 
         <div class="form-input-group">
           <label for="" class="form-input-label">Password</label>
-          <input
-            type="password"
-            class="form-input"
-            placeholder="Enter your Password..."
-            minlength="8"
-            required
-          />
+
+          <div class="input-icon-container">
+            <input
+              type="password"
+              class="form-input inputInitial"
+              placeholder="Enter your Password..."
+              minlength="8"
+              name="password"
+              required
+            />
+
+            <ion-icon
+              name="close-circle-outline"
+              class="login-input-icon invalid-icon"
+            ></ion-icon>
+            <span class="validation-msg">
+              Password must contain atleast 8 characters, special
+              character(@,%,!,^,...), lowecase and uppercase letter, and a
+              number.
+            </span>
+          </div>
         </div>
 
         <button class="btn btn--primary btn--small full-width">Login</button>
@@ -167,6 +194,16 @@
       </clipPath>
     </svg>
 
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+
     <script src="js/script.js"></script>
+    <script src="/js/controller/validation.js"></script>
   </body>
 </html>
