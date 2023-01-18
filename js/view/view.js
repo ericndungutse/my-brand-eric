@@ -71,26 +71,43 @@ class UI {
          <div class="blog-modal">
         <h3 class="heading-primary">Create Blog</h3>
         <form action="" class="form blogForm create-blog-form">
-          <div class="form-input-group">
-            <label for="" class="form-input-label">Title</label>
-            <input
+<div class="form-input-group">
+          <label for="" class="form-input-label">Title</label>
+
+          <div class="input-icon-container">
+           <input
               type="text"
               name="title"
               id=""
               class="form-input inputInitial"
               placeholder="Title..."
-              
+              required
             />
-          </div>
 
-          <div class="form-input-group">
-            <label for="" class="form-input-label">Text</label>
-            <textarea name="text" id="" cols="30" rows=7" class="form-textarea inputInitial" placeholder="Blog Text...."></textarea>
-          </div>
+            <ion-icon
+              name="close-circle-outline"
+              class="login-input-icon invalid-icon"
+            ></ion-icon>
 
-          <div class="form-input-group blog-image-input-group">
+            <span class="validation-msg">Enter blog title. It cannot be empty!</span>
+          </div>
+        </div>
+        <div class="form-input-group">
+           <label for="" class="form-input-label">Text</label>
+
+          <div class="input-icon-container">
+            <textarea name="text" id="" cols="30" rows=7" class="form-textarea inputInitial" placeholder="Blog Text...." required></textarea>
+
+            <ion-icon
+              name="close-circle-outline"
+              class="login-input-icon invalid-icon"
+            ></ion-icon>
+
+            <span class="validation-msg">Blog cannot be empty.</span>
+          </div>
+        </div> <div class="form-input-group blog-image-input-group">
             <label for="blogImagePicker" class="form-input-label blog-image-label"><ion-icon name="image-outline" class="date-picker-icon"></ion-icon><span class="blog-image-label-text">Choose Image</span>
-            </label><input type="file" name="img" class="blog-image-picker" id="blogImagePicker" placeholder="Image..." />
+            </label><input type="file" name="img" class="blog-image-picker" id="blogImagePicker"/>
            <span class="upload-progress"></span>
           </div>
           <button class="btn btn--primary btn--small update-blog-btn">Post</button>

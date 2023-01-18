@@ -4,10 +4,78 @@ import { Modal } from "../view/view.js";
 import { Blog } from "../model/model.js";
 import { Table } from "../view/view.js";
 import { Blog as BlogUI } from "../view/view.js";
+import {
+  isTextFieldEmpty,
+  inputInvalid,
+  initialInputStyles,
+  inputValid,
+} from "../util.js";
 
 const state = {
   blogToDelete: null,
   imageUrl: "",
+};
+
+const validateInputs = () => {
+  const formElements = document.querySelector(".create-blog-form").elements;
+  const blogTitleInput = formElements["title"];
+  const blogTextInput = formElements["text"];
+
+  blogTitleInput.addEventListener("focus", () => {
+    if (!isTextFieldEmpty(blogTitleInput.value)) {
+      inputInvalid(blogTitleInput);
+    }
+  });
+
+  blogTitleInput.addEventListener("input", () => {
+    if (!isTextFieldEmpty(blogTitleInput.value)) {
+      inputInvalid(blogTitleInput);
+    } else {
+      inputValid(blogTitleInput);
+    }
+  });
+
+  blogTitleInput.addEventListener("blur", () => {
+    if (blogTitleInput.value < 1) {
+      initialInputStyles(blogTitleInput);
+    } else if (!isTextFieldEmpty(blogTitleInput.value)) {
+      inputInvalid(blogTitleInput);
+    }
+  });
+
+  blogTextInput.addEventListener("focus", () => {
+    if (!isTextFieldEmpty(blogTextInput.value)) {
+      inputInvalid(blogTextInput);
+    }
+  });
+
+  blogTextInput.addEventListener("input", () => {
+    if (!isTextFieldEmpty(blogTextInput.value)) {
+      inputInvalid(blogTextInput);
+    } else {
+      inputValid(blogTextInput);
+    }
+  });
+
+  blogTextInput.addEventListener("blur", () => {
+    if (blogTextInput.value < 1) {
+      initialInputStyles(blogTextInput);
+    } else if (!isTextFieldEmpty(blogTextInput.value)) {
+      inputInvalid(blogTextInput);
+    }
+  });
+
+  // Hide default message for invalid inputs on submit
+  document.addEventListener(
+    "invalid",
+    (function () {
+      return function (e) {
+        e.preventDefault();
+        e.target.focus();
+      };
+    })(),
+    true
+  );
 };
 
 // Your web app's Firebase configuration
@@ -157,6 +225,8 @@ function createBlog(e) {
 function openBlogModal() {
   // OPEN Modal
   Modal.create("createBlogModal").openCloseModal();
+
+  validateInputs();
 }
 
 /* Open Delete Blog Confirm Alert */
@@ -259,3 +329,5 @@ function renderBlogs() {
 
   BlogUI.renderBlogs(blogsContainer, blogs, "dashboardBlog");
 }
+
+/* ***** VALIDATION ****** */

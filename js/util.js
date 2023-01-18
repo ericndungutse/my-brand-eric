@@ -48,3 +48,7 @@ export function initialInputStyles(el) {
   el.classList.remove("inputValid");
   el.parentElement.lastElementChild.classList.remove("show-valid-msg");
 }
+
+export function isTextFieldEmpty(text) {
+  return text.length > 0;
+}
