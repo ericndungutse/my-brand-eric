@@ -52,3 +52,32 @@ export function initialInputStyles(el) {
 export function isTextFieldEmpty(text) {
   return text.length > 0;
 }
+
+const hideAlert = () => {
+  const el = document.querySelector(".alert");
+  if (el) el.parentElement.removeChild(el);
+};
+
+export const showAlert = (type, message) => {
+  hideAlert();
+  const markup = `<div class="alert alert--${type}">${message}</div>`;
+  document.querySelector("body").insertAdjacentHTML("beforebegin", markup);
+
+  window.setTimeout(hideAlert, 5000);
+};
+
+export const btnLoading = (btn, type, textContent) => {
+  if (type === "addLoading") {
+    btn.disabled = true;
+    btn.classList.add("loading");
+    btn.innerHTML = `<span class="spinner"></span>`;
+  }
+
+  if (type === "removeLoading") {
+    btn.disabled = false;
+    btn.classList.remove("loading");
+    btn.innerHTML = textContent;
+  }
+};
+
+export const url = "http://127.0.0.1:3000/api";

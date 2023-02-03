@@ -1241,7 +1241,7 @@ thead {
 }
 
 .spinner {
-  display: block;
+  display: inline-block;
   width: 1.7rem;
   height: 1.7rem;
   border-radius: 100%;
@@ -1255,6 +1255,7 @@ thead {
   animation-duration: 0.7s;
   animation-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
   animation-iteration-count: infinite;
+  margin: 0;
 }
 
 .blogs {
@@ -1648,6 +1649,42 @@ textarea {
 .show-valid-msg {
   visibility: visible;
   opacity: 1;
+}
+
+/* ALERT */
+.alert {
+  font-family: sans-serif;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  z-index: 9999;
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 2;
+  font-weight: 400;
+  text-align: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 1rem 2rem;
+  -webkit-box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+}
+.alert--success {
+  background-color: #20bf6b;
+}
+.alert--error {
+  background-color: var(--secondary-color);
+}
+
+.loading {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.loading:hover {
+  box-shadow: none;
 }
 
 /* Animations */
