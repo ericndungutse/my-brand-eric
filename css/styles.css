@@ -116,10 +116,6 @@ body {
   box-shadow: 0px 2px 0px 0px var(--primary-color);
 }
 
-.header__user-nav {
-  display: inline-block;
-}
-
 .header__logo-container {
   display: inline-flex;
 }
@@ -811,9 +807,19 @@ body {
   gap: 0.6rem;
 }
 
-.blog__user-image {
+.blog__user-image,
+.header-profile-picture {
   width: 3.5rem;
   border-radius: 50%;
+}
+
+.header-profile-picture {
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.header-profile-picture:hover {
+  box-shadow: 0px 0px 0px 3px var(--grey-color-light);
 }
 
 .blog__user-names {
@@ -1685,6 +1691,10 @@ textarea {
 
 .loading:hover {
   box-shadow: none;
+}
+
+.hidden {
+  display: none;
 }
 
 /* Animations */
