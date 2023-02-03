@@ -12,7 +12,8 @@ document.addEventListener("DOMContentLoaded", renderBlogs);
 // Get and Render blogs
 async function renderBlogs() {
   const blogs = await loadBlogs();
-  // BlogUI.renderBlogs(blogsContainer, blogs, "blogspage");
+  console.log(blogs);
+  BlogUI.renderBlogs(blogsContainer, blogs, "blogspage");
 }
 
 const loadBlogs = async () => {
@@ -30,7 +31,7 @@ const loadBlogs = async () => {
       throw Error(data.message);
     }
 
-    return data.blogs;
+    return data.data.blogs;
   } catch (error) {
     showAlert("error", error.message);
   }

@@ -208,8 +208,8 @@ ${data.text}</textarea
                 />
 
                 <div class="blog__user-names-time">
-                  <p class="blog__user-names">${data.user.name}</p>
-                  <p class="blog__time">${data.date}</p>
+                  // <p class="blog__user-names"></p>
+                  // <p class="blog__time"></p>
                 </div>
               </div>
             </div>
@@ -217,7 +217,7 @@ ${data.text}</textarea
           <div class="blog__image-container">
           
           <img
-            src="${data.imgUrl}"
+            src=""
             class="blog__image"
             alt="Blog Image"
           />
@@ -228,7 +228,7 @@ ${data.text}</textarea
             ${data.title}
           </p>
 
-          <a href="/blogs/${data.id}" class="btn btn--secondary btn-small btn--link"
+          <a href="/blog.html#${data._id}" class="btn btn--secondary btn-small btn--link"
             >Read More</a
           >
         </div>
@@ -382,15 +382,15 @@ class BlogClass extends UI {
     parentEl.innerHTML = "";
 
     data.forEach((blog) => {
-      let { title, date, user, id, imgUrl } = blog;
+      let { title, user, _id, imgUrl } = blog;
 
-      date = dateFormatter(date);
+      // date = dateFormatter(date);
 
       const markup = this._buildMarkup(`${type}`, {
         title,
-        date,
+        // date,
         user,
-        id,
+        _id,
         imgUrl,
       });
 
