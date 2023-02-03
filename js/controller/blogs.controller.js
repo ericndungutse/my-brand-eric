@@ -1,5 +1,6 @@
 import { Blog as BlogUI } from "../view/view.js";
 import { Blog } from "../model/model.js";
+import { showAlert, url } from "../util.js";
 
 const blogsContainer = document.querySelector(".blogs");
 
@@ -9,8 +10,28 @@ document.addEventListener("DOMContentLoaded", renderBlogs);
 
 /* Habdlers */
 // Get and Render blogs
-function renderBlogs() {
-  const blogs = Blog.get("blogs");
-
-  BlogUI.renderBlogs(blogsContainer, blogs, "blogspage");
+async function renderBlogs() {
+  const blogs = await loadBlogs();
+  // BlogUI.renderBlogs(blogsContainer, blogs, "blogspage");
 }
+
+const loadBlogs = async () => {
+  try {
+    console.log("Called");
+    const res = await fetch(`${url}/blogs`, {
+      method: "GET",
+      headers: {
+        "content-Type": "application/json",
+      },
+    });
+
+    const data = await res.json();
+    if (data.status === "fail") {
+      throw Error(data.message);
+    }
+
+    return data.blogs;
+  } catch (error) {
+    showAlert("error", error.message);
+  }
+};

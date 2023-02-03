@@ -15,27 +15,27 @@ const signinFormElements = signinForm.elements;
 const email = signinFormElements["email"];
 const password = signinFormElements["password"];
 
-// email?.addEventListener("input", (e) => {
-//   if (!isEmailValid(e.target.value)) {
-//     inputInvalid(e.target);
-//   } else {
-//     inputValid(e.target);
-//   }
-// });
+email?.addEventListener("input", (e) => {
+  if (!isEmailValid(e.target.value)) {
+    inputInvalid(e.target);
+  } else {
+    inputValid(e.target);
+  }
+});
 
-// email?.addEventListener("focus", (e) => {
-//   if (!isEmailValid(e.target.value) || e.target.value.length === 0) {
-//     inputInvalid(e.target);
-//   }
-// });
+email?.addEventListener("focus", (e) => {
+  if (!isEmailValid(e.target.value) || e.target.value.length === 0) {
+    inputInvalid(e.target);
+  }
+});
 
-// email?.addEventListener("blur", (e) => {
-//   if (e.target.value < 1) {
-//     initialInputStyles(e.target);
-//   } else if (!isEmailValid(email.value)) {
-//     inputInvalid(email);
-//   }
-// });
+email?.addEventListener("blur", (e) => {
+  if (e.target.value < 1) {
+    initialInputStyles(e.target);
+  } else if (!isEmailValid(email.value)) {
+    inputInvalid(email);
+  }
+});
 
 // password.addEventListener("focus", (e) => {
 //   if (!isPassValid(e.target.value)) {
@@ -64,12 +64,11 @@ const password = signinFormElements["password"];
 // ***** SIGNING ******
 signinForm.addEventListener("submit", async (e) => {
   e.preventDefault();
+  const formElements = signinForm.elements;
+  const email = formElements["email"].value;
+  const password = formElements["password"].value;
+  const btn = formElements["login-btn"];
   try {
-    const formElements = signinForm.elements;
-    const email = formElements["email"].value;
-    const password = formElements["password"].value;
-    const btn = formElements["login-btn"];
-
     const reqBody = { email, password };
 
     btnLoading(btn, "addLoading");
@@ -92,8 +91,15 @@ signinForm.addEventListener("submit", async (e) => {
     window.localStorage.setItem("token", JSON.stringify(data.token));
     window.localStorage.setItem("user", JSON.stringify(data.data.user));
 
-    location.assign("/");
+    location.assign("/my-brand-eric");
   } catch (err) {
+    if (err.message === "Failed to fetch") {
+      btnLoading(btn, "removeLoading", "Login");
+      return showAlert(
+        "error",
+        "Failed to connect! Check your internet connection and try gain"
+      );
+    }
     showAlert("error", err.message);
   }
 });
