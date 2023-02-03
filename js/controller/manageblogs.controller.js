@@ -9,11 +9,15 @@ import {
   inputInvalid,
   initialInputStyles,
   inputValid,
+  url,
+  showAlert,
+  btnLoading,
 } from "../util.js";
 
 const state = {
   blogToDelete: null,
-  imageUrl: "",
+  photo: "",
+  token: JSON.parse(localStorage.getItem("token")),
 };
 
 const validateInputs = () => {
@@ -186,39 +190,61 @@ modal.addEventListener("click", confirDeleteBlog);
 /* Habdlers */
 
 // Create Blog
-function createBlog(e) {
+async function createBlog(e) {
   e.preventDefault();
   if (!e.target.classList.contains("create-blog-form")) return false;
   const formElements = e.target.elements;
+  const btn = formElements["create-blog-btn"];
 
   // Create inquiry object
   const blog = {
     title: formElements["title"].value,
     text: formElements["text"].value,
-    imgUrl: state.imageUrl,
-    user: {
-      name: "Eric Ndungutse",
-      avat: "",
-    },
-    date: new Date(),
+    photo: state.photo,
   };
 
-  // Add Blog obj to local storage.
-  const newBlog = Blog.create(blog);
+  try {
+    btnLoading(btn, "addLoading", "Login");
+    const res = await fetch(`${url}/blogs`, {
+      method: "POST",
+      headers: {
+        "content-Type": "application/json",
+        Authorization: `Bearer ${state.token}`,
+      },
+      body: JSON.stringify(blog),
+    });
 
-  /*WITH CARD*/
-  // Update UI with new BLog
-  // BlogUI.insertBlog(blogsContainer, newBlog);
+    const data = await res.json();
+    if (data.status === "fail") {
+      btnLoading(btn, "removeLoading", "Login");
+      throw Error(data.message);
+    }
+    console.log("Created Blog", data);
 
-  // WITH TABLE
-  Table.insertRow(blogsTableBody, newBlog, true);
+    /*WITH CARD*/
+    // Update UI with new BLog
+    // BlogUI.insertBlog(blogsContainer, newBlog);
 
-  // Reset inputs of the form
-  formElements["title"].value = "";
-  formElements["text"].value = "";
+    btnLoading(btn, "removeLoading", "Login");
+    // WITH TABLE
+    Table.insertRow(blogsTableBody, data.data.blog, true);
 
-  // Close Modal
-  Modal.openCloseModal();
+    // Reset inputs of the form
+    formElements["title"].value = "";
+    formElements["text"].value = "";
+
+    // Close Modal
+    Modal.openCloseModal();
+  } catch (err) {
+    if (err.message === "Failed to fetch") {
+      btnLoading(btn, "removeLoading", "Login");
+      return showAlert(
+        "error",
+        "Failed to connect! Check your internet connection and try gain"
+      );
+    }
+    showAlert("error", err.message);
+  }
 }
 
 // Open Blog Modal
@@ -252,23 +278,44 @@ function areSureYouWantToDelete(e) {
 }
 
 /* Confirm Delete Inquiry */
-//  TODO:
-// ALERT TO NOTIFY USER OF SUCCESS DELETE
-function confirDeleteBlog(e) {
+async function confirDeleteBlog(e) {
   if (!e.target.classList.contains("yes-delete")) return;
-
   // DELETE BLOG FROM LOCAL STORAGE
-  Blog.deleteOne(+state.blogToDelete);
+  try {
+    // Close Modal
+    Modal.openCloseModal();
+    const res = await fetch(`${url}/blogs/${state.blogToDelete}`, {
+      method: "DELETE",
+      headers: {
+        "content-Type": "application/json",
+        Authorization: `Bearer ${state.token}`,
+      },
+    });
 
-  // REMOVE ELEMENT IN DOM CONTAINING DELETE INQUIRY
-  // BlogUI.removeEl("dashboard__blogs", +state.blogToDelete);
+    if (!res.status === 204) {
+      throw Error(data);
+    }
 
-  // TABLE
-  // REMOVE ELEMENT IN DOM CONTAINING DELETE INQUIRY
-  BlogUI.removeEl("blogs-table__body", +state.blogToDelete);
+    showAlert("success", "Blog deleted.");
 
-  // Close Modal
-  Modal.openCloseModal();
+    // TABLE
+    // REMOVE ELEMENT IN DOM CONTAINING DELETE INQUIRY
+    BlogUI.removeEl("blogs-table__body", state.blogToDelete);
+
+    // CARD
+    // REMOVE ELEMENT IN DOM CONTAINING DELETE INQUIRY
+    // BlogUI.removeEl("dashboard__blogs", +state.blogToDelete);
+  } catch (error) {
+    if (error.message === "Failed to fetch") {
+      btnLoading(btn, "removeLoading", "Login");
+      return showAlert(
+        "error",
+        "Failed to connect! Check your internet connection and try gain"
+      );
+    }
+
+    showAlert("error", error.message);
+  }
 }
 
 // Upload Image handler
@@ -292,7 +339,8 @@ function uploadImg(className) {
   task
     .then((snapshot) => snapshot.ref.getDownloadURL())
     .then((url) => {
-      state.imageUrl = url;
+      state.photo = url;
+      console.log(state);
       document.querySelector(".blog-image-label-text").innerHTML = imageName;
     })
     .catch((error) => {
@@ -308,26 +356,38 @@ document.addEventListener("change", (e) => {
   uploadImg("blog-image-picker");
 });
 
+// RENDER BLOGS / TABLE
+export const renderBlogsTable = async () => {
+  try {
+    const res = await fetch(`${url}/blogs`, {
+      method: "GET",
+      headers: {
+        "content-Type": "application/json",
+      },
+    });
+
+    const data = await res.json();
+    if (data.status === "fail") {
+      throw Error(data.message);
+    }
+
+    Table.renderRows(blogsTableBody, data.data.blogs, true);
+    // renderBlogs(data.data.blogs);
+  } catch (error) {
+    console.log(error);
+    showAlert("error", error.message);
+  }
+};
+
 // With Table
 // Get Blogs when Contents gets loaded And Update State - USING TabLE
 document.addEventListener("DOMContentLoaded", renderBlogsTable);
-
-// RENDER BLOGS / TABLE
-function renderBlogsTable() {
-  const blogs = Blog.get("blogs");
-
-  Table.renderRows(blogsTableBody, blogs, true);
-}
 
 // With Cards
 // Get Blogs when Contents gets loaded And Update State
 // document.addEventListener("DOMContentLoaded", renderBlogs);
 
 // Get and Render blogs
-function renderBlogs() {
-  const blogs = Blog.get("blogs");
-
+function renderBlogs(blogs) {
   BlogUI.renderBlogs(blogsContainer, blogs, "dashboardBlog");
 }
-
-/* ***** VALIDATION ****** */

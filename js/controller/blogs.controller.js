@@ -12,13 +12,11 @@ document.addEventListener("DOMContentLoaded", renderBlogs);
 // Get and Render blogs
 async function renderBlogs() {
   const blogs = await loadBlogs();
-  console.log(blogs);
   BlogUI.renderBlogs(blogsContainer, blogs, "blogspage");
 }
 
 const loadBlogs = async () => {
   try {
-    console.log("Called");
     const res = await fetch(`${url}/blogs`, {
       method: "GET",
       headers: {

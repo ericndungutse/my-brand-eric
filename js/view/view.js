@@ -27,10 +27,9 @@ class UI {
 
       case "blogRow":
         return `
-                  <tr data-id="${data.id}">
-                    <td class="center">${data.id}</td>
+                <tr data-id="${data._id}">
                     <td class="sender-name">${data.title}</td>
-                    <td>${data.date}</td>
+                    <td>${data.createdAt}</td>
                     <td class="table-inquiries-action">
                       <button class="btn btn--secondary btn--small blog__menu-update-btn">Update</button>
                       <button class="btn btn--tertiary btn--small blog__menu-delete-btn">Delete</button>
@@ -45,7 +44,6 @@ class UI {
             <p class="paragraph">${data.msg}</p>
             <p class="paragraph">${data.date}</p>
           </div>`;
-        break;
 
       case "deleteConfBoxModal":
         return `
@@ -110,7 +108,7 @@ class UI {
             </label><input type="file" name="img" class="blog-image-picker" id="blogImagePicker"/>
            <span class="upload-progress"></span>
           </div>
-          <button class="btn btn--primary btn--small update-blog-btn">Post</button>
+          <button class="btn btn--primary btn--small update-blog-btn" id="create-blog-btn">Post</button>
         </form>
         </div>
         `;
@@ -208,8 +206,8 @@ ${data.text}</textarea
                 />
 
                 <div class="blog__user-names-time">
-                  // <p class="blog__user-names"></p>
-                  // <p class="blog__time"></p>
+                  <p class="blog__user-names">${data.user.name}</p>
+                  <p class="blog__time">${data.createdAt}</p>
                 </div>
               </div>
             </div>
@@ -217,7 +215,7 @@ ${data.text}</textarea
           <div class="blog__image-container">
           
           <img
-            src=""
+            src="${data.photo}"
             class="blog__image"
             alt="Blog Image"
           />
@@ -228,7 +226,7 @@ ${data.text}</textarea
             ${data.title}
           </p>
 
-          <a href="/blog.html#${data._id}" class="btn btn--secondary btn-small btn--link"
+          <a href="/blog.html?id=${data._id}" class="btn btn--secondary btn-small btn--link"
             >Read More</a
           >
         </div>
@@ -351,7 +349,7 @@ class TableClass extends UI {
     data.forEach((datum, index) => {
       let obj = { ...datum };
 
-      obj.date = dateFormatter(obj.date);
+      obj.createdAt = dateFormatter(obj.createdAt);
       obj.index = index;
 
       markup = this._buildMarkup(`${rowType}`, obj);
@@ -360,11 +358,12 @@ class TableClass extends UI {
   }
 
   insertRow(parentEl, data, blog = false) {
+    console.log(data);
     const rowType = blog === true ? "blogRow" : "inquiryRow";
 
     let obj = { ...data };
 
-    obj.date = dateFormatter(obj.date);
+    obj.createdAt = dateFormatter(obj.createdAt);
 
     const markup = this._buildMarkup(`${rowType}`, obj);
     parentEl.insertAdjacentHTML("beforeend", markup);
@@ -382,16 +381,18 @@ class BlogClass extends UI {
     parentEl.innerHTML = "";
 
     data.forEach((blog) => {
-      let { title, user, _id, imgUrl } = blog;
+      console.log("Blog To render", blog);
+      let { title, user, _id, photo, createdAt } = blog;
 
-      // date = dateFormatter(date);
+      createdAt = dateFormatter(createdAt);
+      console.log(createdAt);
 
       const markup = this._buildMarkup(`${type}`, {
         title,
-        // date,
+        createdAt,
         user,
         _id,
-        imgUrl,
+        photo,
       });
 
       parentEl.insertAdjacentHTML("beforeend", markup);
