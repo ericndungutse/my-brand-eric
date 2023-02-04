@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", renderBlogs);
 // Get and Render blogs
 async function renderBlogs() {
   const blogs = await loadBlogs();
+  blogsContainer.firstElementChild.remove();
   BlogUI.renderBlogs(blogsContainer, blogs, "blogspage");
 }
 

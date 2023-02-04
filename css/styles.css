@@ -1264,6 +1264,23 @@ thead {
   margin: 0;
 }
 
+.spinner--big {
+  width: 5rem;
+  height: 5rem;
+}
+
+.spinner--bigger {
+  width: 7rem;
+  height: 7rem;
+}
+
+.spinner-container {
+  width: 100%;
+  height: 20rem;
+  display: grid;
+  place-items: center;
+}
+
 .blogs {
   align-items: center;
 }
@@ -1695,6 +1712,17 @@ textarea {
 
 .hidden {
   display: none;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+.btn:disabled:hover,
+.btn--secondary:disabled:hover {
+  box-shadow: none;
+  background-color: #ffff19;
+  color: #333;
 }
 
 /* Animations */

@@ -67,6 +67,7 @@ export const showAlert = (type, message) => {
 };
 
 export const btnLoading = (btn, type, textContent) => {
+  console.log("Here");
   if (type === "addLoading") {
     btn.disabled = true;
     btn.classList.add("loading");
@@ -81,3 +82,37 @@ export const btnLoading = (btn, type, textContent) => {
 };
 
 export const url = "https://ndungutse.onrender.com/api";
+
+export const fetchHandler = async (method, endpoint, token, reqBody) => {
+  if (reqBody) {
+    const res = await fetch(`${url}/${endpoint}`, {
+      method: method,
+      headers: {
+        "content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+
+      body: JSON.stringify(reqBody),
+    });
+
+    return await res.json();
+  } else {
+    const res = await fetch(`${url}/${endpoint}`, {
+      method: method,
+      headers: {
+        "content-Type": "application/json",
+      },
+    });
+
+    return await res.json();
+  }
+};
+
+export const errorHandler = (err) => {
+  let message =
+    err.message === "Failed to fetch"
+      ? "Failed to connect! Check your internet connection and try gain"
+      : err.message;
+
+  showAlert("error", message);
+};

@@ -7,6 +7,7 @@ import {
   url,
   showAlert,
   btnLoading,
+  errorHandler,
 } from "../util.js";
 
 const signinForm = document.querySelector(".sign-in-form");
@@ -93,13 +94,7 @@ signinForm.addEventListener("submit", async (e) => {
 
     location.assign("/my-brand-eric");
   } catch (err) {
-    if (err.message === "Failed to fetch") {
-      btnLoading(btn, "removeLoading", "Login");
-      return showAlert(
-        "error",
-        "Failed to connect! Check your internet connection and try gain"
-      );
-    }
-    showAlert("error", err.message);
+    btnLoading(btn, "removeLoading", "Login");
+    errorHandler(err);
   }
 });
