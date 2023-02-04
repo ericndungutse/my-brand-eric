@@ -140,10 +140,10 @@ ${data.text}</textarea
 
           <div class="form-input-group blog-image-input-group">
             <label for="blogImagePicker" class="form-input-label blog-image-label"><ion-icon name="image-outline" class="date-picker-icon"></ion-icon><span class="blog-image-label-text">Choose Image</span>
-            </label><input type="file" name="img" class="blog-image-picker" id="blogImagePicker" placeholder="Image..." />
+            </label><input type="file" name="img" value="${data.photo}" class="blog-image-picker" id="blogImagePicker" placeholder="Image..." />
            <span class="upload-progress"></span>
           </div>
-          <button class="btn btn--primary btn--small update-blog-btn">Update</button>
+          <button class="btn btn--primary btn--small update-blog-btn" id="update-blog-btn">Update</button>
         </form>
         </div>
       `;

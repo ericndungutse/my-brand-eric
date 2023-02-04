@@ -16,6 +16,7 @@ import {
 
 const state = {
   blogToDelete: null,
+  blogs: [],
   photo: "",
   token: JSON.parse(localStorage.getItem("token")),
 };
@@ -137,15 +138,14 @@ document.addEventListener("click", (e) => {
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("blog__menu-update-btn")) {
     // Get ID of the Blog
-    const blogId = e.target.parentElement.parentElement.dataset.id;
+    state.blogToUpdate = e.target.parentElement.parentElement.dataset.id;
+
+    const blog = state.blogs.find((blog) => blog._id === state.blogToUpdate);
 
     // // Get ID of the Blog
     // TODO ID FOR CARD
     // const blogId =
     //   e.target.parentElement.parentElement.parentElement.dataset.id;
-
-    // Get Blog based on ID
-    const blog = Blog.getOne(blogId);
 
     // CREATE & OPEN Modal
     Modal.create("updateBlogModal", blog).openCloseModal();
@@ -153,35 +153,63 @@ document.addEventListener("click", (e) => {
 });
 
 // Update
-document.addEventListener("submit", (e) => {
-  if (!e.target.classList.contains("update-blog-form")) return false;
-  const formElements = e.target.elements;
+document.addEventListener("submit", async (e) => {
+  try {
+    if (!e.target.classList.contains("update-blog-form")) return false;
+    const formElements = e.target.elements;
+    const photo = state.photo;
+    const btn = formElements["update-blog-btn"];
 
-  // Create inquiry object
-  const updatedBlog = {
-    title: formElements["title"].value,
-    text: formElements["text"].value,
-    img: formElements["img"].value,
-  };
+    // Update
+    const blog = {
+      title: formElements["title"].value,
+      text: formElements["text"].value,
+      photo,
+    };
 
-  // TODO CARDS
-  // const blogs = Blog.UpdateOne(+e.target.dataset.id, updatedBlog);
+    if (photo === "") delete blog.photo;
 
-  // BlogUI.renderBlogs(blogsContainer, blogs, "dashboardBlog");
+    btnLoading(btn, "addLoading", "Login");
+    const res = await fetch(`${url}/blogs/${state.blogToUpdate}`, {
+      method: "PATCH",
+      headers: {
+        "content-Type": "application/json",
+        Authorization: `Bearer ${state.token}`,
+      },
+      body: JSON.stringify(blog),
+    });
 
-  // TABLE
-  const blogs = Blog.UpdateOne(+e.target.dataset.id, updatedBlog);
+    const data = await res.json();
 
-  // WITH TABLE
-  Table.renderRows(blogsTableBody, blogs, true);
+    if (data.status === "fail") {
+      btnLoading(btn, "removeLoading", "Login");
+      throw Error(data.message);
+    }
 
-  // Reset inputs of the form
-  formElements["title"].value = "";
-  formElements["text"].value = "";
-  formElements["img"].value = "";
+    const updatedBlog = data.data.blog;
 
-  // Close Modal
-  Modal.openCloseModal();
+    showAlert("success", "Blog updated");
+
+    state.blogs.splice(
+      state.blogs.findIndex((blog) => (blog._id = updatedBlog._id)),
+      1,
+      updatedBlog
+    );
+
+    Table.renderRows(blogsTableBody, state.blogs, true);
+
+    // Close Modal
+    Modal.openCloseModal();
+  } catch (err) {
+    if (err.message === "Failed to fetch") {
+      btnLoading(btn, "removeLoading", "Login");
+      return showAlert(
+        "error",
+        "Failed to connect! Check your internet connection and try gain"
+      );
+    }
+    showAlert("error", err.message);
+  }
 });
 
 /* Confirm Delete Inquiry */
@@ -219,13 +247,13 @@ async function createBlog(e) {
       btnLoading(btn, "removeLoading", "Login");
       throw Error(data.message);
     }
-    console.log("Created Blog", data);
 
     /*WITH CARD*/
     // Update UI with new BLog
     // BlogUI.insertBlog(blogsContainer, newBlog);
 
     btnLoading(btn, "removeLoading", "Login");
+    state.blogs.push(data.data.blog);
     // WITH TABLE
     Table.insertRow(blogsTableBody, data.data.blog, true);
 
@@ -371,6 +399,8 @@ export const renderBlogsTable = async () => {
       throw Error(data.message);
     }
 
+    state.blogs = data.data.blogs;
+    console.log(state);
     Table.renderRows(blogsTableBody, data.data.blogs, true);
     // renderBlogs(data.data.blogs);
   } catch (error) {
