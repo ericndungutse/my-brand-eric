@@ -52,7 +52,6 @@ contactMeForm.addEventListener("submit", async (e) => {
     initialInputStyles(message);
   } catch (err) {
     btnLoading(btn, "removeLoading", "Send");
-    console.log(err);
     errorHandler(err);
   }
 });

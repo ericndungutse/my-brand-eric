@@ -320,7 +320,7 @@ async function confirDeleteBlog(e) {
       },
     });
 
-    if (!res.status === 204) {
+    if (res.status !== 204) {
       throw Error(data);
     }
 

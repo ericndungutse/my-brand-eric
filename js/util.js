@@ -83,7 +83,8 @@ export const btnLoading = (btn, type, textContent) => {
 export const url = "https://ndungutse.onrender.com/api";
 
 export const fetchHandler = async (method, endpoint, token, reqBody) => {
-  const res = await fetch(`${url}/${endpoint}`, {
+  console.log(`${url}/${endpoint}`);
+  const res = await fetch(`${url}/${endpoint}/`, {
     method: method,
     headers: {
       "content-Type": "application/json",
@@ -91,6 +92,8 @@ export const fetchHandler = async (method, endpoint, token, reqBody) => {
     },
     ...(reqBody && { body: JSON.stringify(reqBody) }),
   });
+
+  if (method === "DELETE") return res;
 
   return await res.json();
 };

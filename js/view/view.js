@@ -12,15 +12,12 @@ class UI {
   _buildMarkup(el, data) {
     switch (el) {
       case "inquiryRow":
-        return `<tr data-id="${data.id}">
-                    <td class="center">${data.index + 1}</td>
+        return `<tr data-id="${data._id}">
                     <td class="sender-name">${data.name}</td>
                     <td>${data.email}</td>
-                    <td>${data.date}</td>
+                    <td>${data.createdAt}</td>
                     <td class="table-inquiries-action">
-                      <button class="btn btn--secondary btn--small read-inquiry-btn" data-id="${
-                        data.index
-                      }">Read</button>
+                      <button class="btn btn--secondary btn--small read-inquiry-btn" data-id="${data._id}">Read</button>
                       <button class="btn btn--tertiary btn--small delete-inquiry-btn">Delete</button>
                     </td>
                 </tr>`;
@@ -41,8 +38,8 @@ class UI {
         return `<div class="modal__inquiry">
             <span class="modal__close">&times;</span>
             <h2 class="heading-primary">${data.name}</h2>
-            <p class="paragraph">${data.msg}</p>
-            <p class="paragraph">${data.date}</p>
+            <p class="paragraph">${data.message}</p>
+            <p class="paragraph">${data.createdAt}</p>
           </div>`;
 
       case "deleteConfBoxModal":
@@ -254,13 +251,13 @@ class ModalClass extends UI {
   create(modalName, data) {
     // CONSTRUCT CUSTOM MODAL
     if (modalName === "inquiryDetailsModal") {
-      let { name, msg, date } = data;
-      date = dateFormatter(date);
+      let { name, message, createdAt } = data;
+      createdAt = dateFormatter(createdAt);
       // CREATE MARKUP
       let markup = this._buildMarkup("inquiryDetailsModal", {
         name,
-        msg,
-        date,
+        message,
+        createdAt,
       });
 
       // Clear Modal

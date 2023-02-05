@@ -1,12 +1,16 @@
 "use strict";
 import { Inquiry } from "../model/model.js";
 import { Modal, Table } from "../view/view.js";
+import { fetchHandler, errorHandler } from "../util.js";
 
 const state = {
+  inquiries: [],
   inquiryToDelete: null,
+  token: JSON.parse(localStorage.getItem("token")),
 };
 
 const inquiriesTableBody = document.querySelector(".inquiries-table__body");
+
 const modal = document.querySelector(".modal");
 
 /* ***** ENVENT LISTENERS ***** */
@@ -26,19 +30,29 @@ modal.addEventListener("click", confirDeleteInquiry);
 /* ***** HANDLERS ***** */
 
 /* 1) RENDER INQUIRIES  */
-function renderInquiries() {
-  const inquiries = Inquiry.get("inquiries");
-  Table.renderRows(inquiriesTableBody, inquiries);
+async function renderInquiries() {
+  try {
+    const res = await fetchHandler("GET", "messages", state.token);
+
+    if (res.status !== "success") {
+      throw Error(res.message);
+    }
+
+    const inquiries = res.data.messages;
+    state.inquiries = inquiries;
+    Table.renderRows(inquiriesTableBody, inquiries);
+  } catch (err) {
+    errorHandler(err);
+  }
 }
 
 /* 2) RENDER DETAIL MODAL */
 function renderInquiry(e) {
   if (e.target.classList.contains("read-inquiry-btn")) {
     // Get ID of the inquiry from its button
-    const id = +e.target.parentElement.parentElement.dataset.id;
+    const id = e.target.parentElement.parentElement.dataset.id;
 
-    // Get inquiry based on ID
-    const inquiry = Inquiry.getOne(id);
+    const inquiry = state.inquiries.find((inquiry) => inquiry._id === id);
 
     // CREATE & OPEN Modal
     Modal.create("inquiryDetailsModal", inquiry).openCloseModal();
@@ -62,17 +76,27 @@ function areSureYouWantToDelete(e) {
 }
 
 /* 4) Confirm Delete Inquiry */
-//  TODO:
-// ALERT TO NOTIFY USER OF SUCCESS DELETE
-function confirDeleteInquiry(e) {
-  if (!e.target.classList.contains("yes-delete")) return;
+async function confirDeleteInquiry(e) {
+  if (!e.target.classList.contains("yes-delete")) return false;
 
-  // DELETE INQUIRY
-  Inquiry.deleteOne(state.inquiryToDelete);
+  try {
+    const res = await fetchHandler(
+      "DELETE",
+      `messages/${state.inquiryToDelete}`,
+      state.token
+    );
 
-  // REMOVE ELEMENT IN DOM CONTAINING DELETE INQUIRY
-  Table.removeEl("inquiries-table__body", state.inquiryToDelete);
+    if (res.status !== 204) {
+      const data = await res.json();
+      throw Error(await data.message);
+    }
+    // REMOVE ELEMENT IN DOM CONTAINING DELETE INQUIRY
+    Table.removeEl("inquiries-table__body", state.inquiryToDelete);
 
-  // Close Modal
-  Modal.openCloseModal();
+    showAlert("success", "Message deleted.");
+  } catch (err) {
+    // Close Modal
+    Modal.openCloseModal();
+    errorHandler(err);
+  }
 }
