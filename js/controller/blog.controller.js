@@ -146,7 +146,6 @@ document.addEventListener("submit", async (e) => {
     const res = await fetchHandler("POST", "comments", state.token, body);
 
     if (res.status !== "success") {
-      btnLoading(btn, "removeLoading", "Send");
       throw Error(res.message);
     }
 
