@@ -9,15 +9,37 @@
     <title>Dashboard | Eric</title>
   </head>
   <body class="dashboard-body">
+    <div class="checking_user">
+      <div class="checking_user-content">
+        <div class="spinner spinner--bigger"></div>
+        <span>Dashboard...</span>
+      </div>
+    </div>
     <!-- HEADER -->
     <header class="header dashboard-header">
       <div class="header__logo-container">
         <a href="/"><img class="header__logo" src="img/Logo.png" /></a>
       </div>
       <div class="header__user-nav">
-        <a href="sign-in.html" class="btn btn--primary btn--big btn--link"
-          >Log in</a
-        >
+        <img
+          src="img/default.jpg"
+          class="header-profile-picture"
+          alt="userProfile"
+        />
+        <div class="dropdown">
+          <div class="user-dropdown-menu">
+            <a
+              href="/dashboard.html"
+              class="blog__menu-item blog__menu-update-btn link"
+              ><ion-icon name="create-outline"></ion-icon> Dashboard</a
+            >
+
+            <hr />
+            <span class="blog__menu-item blog__menu-delete-btn"
+              ><ion-icon name="trash-outline"></ion-icon> Logout</span
+            >
+          </div>
+        </div>
       </div>
 
       <img class="open-mobile-nav-icon" src="img/menu-svgrepo-com.svg" alt="" />
@@ -74,7 +96,9 @@
             ></ion-icon
             >Blogs</a
           >
-          <a href="inquiries.html" class="dashboard__nav-link link"
+          <a
+            href="inquiries.html"
+            class="dashboard__nav-link link inquiries-link"
             ><ion-icon
               name="mail-outline"
               class="dashboard-side-nav-icon"
@@ -116,7 +140,7 @@
           </form>
 
           <div class="update-infor-form-container">
-            <form action="" class="form">
+            <form action="" class="form profile-form">
               <div class="form-input-group">
                 <label for="" class="form-input-label">Name</label>
                 <input
@@ -130,28 +154,20 @@
               </div>
 
               <div class="form-input-group">
-                <label for="" class="form-input-label">Tel</label>
-                <input
-                  type="tel"
-                  class="form-input"
-                  placeholder="Enter your Tel..."
-                  required
-                  minlength="10"
-                  name="tel"
-                />
-              </div>
-
-              <div class="form-input-group">
                 <label for="" class="form-input-label">Email</label>
                 <input
                   type="email"
                   class="form-input"
+                  name="email"
                   placeholder="Enter your Email..."
                   required
                 />
               </div>
 
-              <button class="btn btn--primary btn--small full-width">
+              <button
+                class="btn btn--primary btn--small full-width"
+                id="update-profile-btn"
+              >
                 Update
               </button>
             </form>
@@ -169,6 +185,7 @@
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
 
-    <script src="js/script.js"></script>
+    <script type="module" src="js/controller/profile.controller.js"></script>
+    <script type="module" src="js/script.js"></script>
   </body>
 </html>

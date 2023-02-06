@@ -371,7 +371,7 @@ body {
 }
 
 .dropdown {
-  display: none;
+  /* display: none; */
 }
 
 .show-dropdown {
@@ -852,7 +852,8 @@ spam.blog__menu-icon-dot {
   margin: -1rem 0;
 }
 
-.blog__menu {
+.blog__menu,
+.user-dropdown-menu {
   width: 60%;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
     rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
@@ -866,6 +867,11 @@ spam.blog__menu-icon-dot {
   top: 4.5rem;
   padding: 1rem 1rem;
   transition: all 0.3s;
+}
+
+.user-dropdown-menu {
+  width: 20rem;
+  right: 40% !important;
 }
 
 .blog__menu-item {
@@ -1723,6 +1729,31 @@ textarea {
   box-shadow: none;
   background-color: #ffff19;
   color: #333;
+}
+
+.header__user-nav {
+  position: relative;
+}
+
+.checking_user {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 1000000;
+  background: white;
+  display: grid;
+  place-items: center;
+}
+
+.checking_user-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
 }
 
 /* Animations */

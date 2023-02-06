@@ -98,30 +98,6 @@ export const fetchHandler = async (method, endpoint, token, reqBody) => {
   return await res.json();
 };
 
-// export const fetchHandler = async (method, endpoint, token, reqBody) => {
-//   if (reqBody) {
-//     const res = await fetch(`${url}/${endpoint}`, {
-//       method: method,
-//       headers: {
-//         "content-Type": "application/json",
-//         ...(token && { Authorization: `Bearer ${token}` }),
-//       },
-//       ...(reqBody && { body: JSON.stringify(reqBody) }),
-//     });
-
-//     return await res.json();
-//   } else {
-//     const res = await fetch(`${url}/${endpoint}`, {
-//       method: method,
-//       headers: {
-//         "content-Type": "application/json",
-//       },
-//     });
-
-//     return await res.json();
-//   }
-// };
-
 export const errorHandler = (err) => {
   let message =
     err.message === "Failed to fetch"
@@ -129,4 +105,18 @@ export const errorHandler = (err) => {
       : err.message;
 
   showAlert("error", message);
+};
+
+export const checkUser = async (token) => {
+  try {
+    const res = await fetchHandler("GET", "users/me", token);
+    if (res.status !== "success") {
+      throw Error(res.message);
+    }
+
+    return res.data;
+  } catch (err) {
+    errorHandler(err);
+    return null;
+  }
 };
