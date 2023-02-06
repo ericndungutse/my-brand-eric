@@ -31,7 +31,20 @@
           class="header-profile-picture hidden"
           alt="userProfile"
         />
-        <div class="user-menu"></div>
+        <div class="dropdown">
+          <div class="user-dropdown-menu">
+            <a
+              href="/dashboard.html"
+              class="blog__menu-item blog__menu-update-btn link"
+              ><ion-icon name="create-outline"></ion-icon> Dashboard</a
+            >
+
+            <hr />
+            <span class="blog__menu-item blog__menu-delete-btn logout-btn"
+              ><ion-icon name="trash-outline"></ion-icon> Logout</span
+            >
+          </div>
+        </div>
       </div>
 
       <img class="open-mobile-nav-icon" src="img/menu-svgrepo-com.svg" alt="" />
@@ -55,6 +68,21 @@
         <a href="sign-in.html" class="btn btn--secondary btn--big btn--link"
           >Log in</a
         >
+
+        <div class="dropdown">
+          <div class="user-dropdown-menu">
+            <a
+              href="/dashboard.html"
+              class="blog__menu-item blog__menu-update-btn link"
+              ><ion-icon name="create-outline"></ion-icon> Dashboard</a
+            >
+
+            <hr />
+            <span class="blog__menu-item blog__menu-delete-btn"
+              ><ion-icon name="trash-outline"></ion-icon> Logout</span
+            >
+          </div>
+        </div>
       </div>
     </div>
 
@@ -211,7 +239,7 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
-    <script src="js/script.js"></script>
+    <script type="module" src="js/script.js"></script>
     <script type="module" src="js/controller/contactme.controller.js"></script>
   </body>
 </html>

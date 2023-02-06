@@ -66,9 +66,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
       });
     } else {
-      location.assign("/sign-in.html");
+      location.assign("/my-brand-eric/sign-in.html");
     }
   } else {
-    location.assign("/sign-in.html");
+    location.assign("/my-brand-eric/sign-in.html");
   }
 });

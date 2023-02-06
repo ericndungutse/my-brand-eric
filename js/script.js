@@ -69,16 +69,19 @@ const addLoginBtn = () => {
 };
 
 // Logout
-document.querySelector(".logout-btn").addEventListener("click", (e) => {
-  e.preventDefault();
-  const url = document.URL;
-  localStorage.removeItem("token");
-  if (
-    url.includes("dashboard") ||
-    url.includes("manageblogs") ||
-    url.includes("inquiries.html") ||
-    url.includes("settings")
-  ) {
-    location.assign("/");
-  }
-});
+if (document.querySelector(".logout-btn"))
+  document.querySelector(".logout-btn").addEventListener("click", (e) => {
+    e.preventDefault();
+    const url = document.URL;
+    localStorage.removeItem("token");
+    if (
+      url.includes("dashboard") ||
+      url.includes("manageblogs") ||
+      url.includes("inquiries.html") ||
+      url.includes("settings")
+    ) {
+      location.assign("/");
+    } else {
+      addLoginBtn();
+    }
+  });
