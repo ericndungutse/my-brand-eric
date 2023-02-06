@@ -16,11 +16,14 @@ if (
   !url.includes("inquiries.html" && !url.includes("settings"))
 ) {
   // OPEN AND CLOSE USER MENU
-  document
-    .querySelector(".header-profile-picture")
-    .addEventListener("click", () => {
-      document.querySelector(".dropdown").classList.toggle("toggle-user-menu");
-    });
+  if (document.querySelector(".header-profile-picture"))
+    document
+      .querySelector(".header-profile-picture")
+      .addEventListener("click", () => {
+        document
+          .querySelector(".dropdown")
+          .classList.toggle("toggle-user-menu");
+      });
   openMobileNavBtn.addEventListener("click", () => {
     overlay.classList.add("show-overlay");
     mobileNav.classList.add("show-mobile-nav");
@@ -36,10 +39,12 @@ if (
     const token = JSON.parse(localStorage.getItem("token"));
 
     if (token) {
-      console.log(token);
       const user = await checkUser(token);
-      console.log(user);
+
       if (user) {
+        if (document.URL.includes("sign-in")) {
+          return location.assign("/my-brand-eric");
+        }
         const userNav = document.querySelector(".header__user-nav");
         userNav
           .querySelector(".header-profile-picture")
@@ -86,7 +91,11 @@ if (document.querySelector(".logout-btn"))
       url.includes("inquiries.html") ||
       url.includes("settings")
     ) {
-      location.assign("/");
+      location.assign("/my-brand-eric");
+    } else if (url.includes("blog.html")) {
+      // Remove Like and Form
+      document.querySelector(".like-btn").remove();
+      document.querySelector(".blog-page__comment-form").remove();
     } else {
       addLoginBtn();
     }

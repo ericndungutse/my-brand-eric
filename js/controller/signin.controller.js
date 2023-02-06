@@ -38,29 +38,29 @@ email?.addEventListener("blur", (e) => {
   }
 });
 
-// password.addEventListener("focus", (e) => {
-//   if (!isPassValid(e.target.value)) {
-//     inputInvalid(e.target);
-//   } else {
-//     inputValid(e.target);
-//   }
-// });
+password.addEventListener("focus", (e) => {
+  if (!isPassValid(e.target.value)) {
+    inputInvalid(e.target);
+  } else {
+    inputValid(e.target);
+  }
+});
 
-// password.addEventListener("input", (e) => {
-//   if (!isPassValid(e.target.value)) {
-//     inputInvalid(e.target);
-//   } else {
-//     inputValid(e.target);
-//   }
-// });
+password.addEventListener("input", (e) => {
+  if (!isPassValid(e.target.value)) {
+    inputInvalid(e.target);
+  } else {
+    inputValid(e.target);
+  }
+});
 
-// password.addEventListener("blur", (e) => {
-//   if (e.target.value < 1) {
-//     initialInputStyles(e.target);
-//   } else if (!isEmailValid(email.value)) {
-//     inputInvalid(email);
-//   }
-// });
+password.addEventListener("blur", (e) => {
+  if (e.target.value < 1) {
+    initialInputStyles(e.target);
+  } else if (!isEmailValid(email.value)) {
+    inputInvalid(email);
+  }
+});
 
 // ***** SIGNING ******
 signinForm.addEventListener("submit", async (e) => {

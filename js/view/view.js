@@ -131,8 +131,8 @@ class UI {
           <div class="form-input-group">
             <label for="" class="form-input-label">Text</label>
             <textarea name="text" id="" cols="30" rows="7" class="form-textarea inputInitial" >
-${data.text}</textarea
-            >
+              ${data.text}
+              </textarea>
           </div>
 
           <div class="form-input-group blog-image-input-group">
@@ -223,7 +223,7 @@ ${data.text}</textarea
             ${data.title}
           </p>
 
-          <a href="/blog.html?id=${data._id}" class="btn btn--secondary btn-small btn--link"
+          <a href="/my-brand-eric/blog.html?id=${data._id}" class="btn btn--secondary btn-small btn--link"
             >Read More</a
           >
         </div>
