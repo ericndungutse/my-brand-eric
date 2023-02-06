@@ -370,8 +370,8 @@ body {
   text-align: center !important;
 }
 
-.dropdown {
-  /* display: none; */
+.header .dropdown {
+  z-index: 100000;
 }
 
 .show-dropdown {
@@ -871,7 +871,8 @@ spam.blog__menu-icon-dot {
 
 .user-dropdown-menu {
   width: 20rem;
-  right: 40% !important;
+  right: -100% !important;
+  z-index: 100000;
 }
 
 .blog__menu-item {
@@ -1718,6 +1719,11 @@ textarea {
 
 .hidden {
   display: none;
+}
+
+.toggle-user-menu {
+  visibility: hidden;
+  opacity: 0;
 }
 
 .btn:disabled {

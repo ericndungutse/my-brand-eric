@@ -15,6 +15,12 @@ if (
   !url.includes("manageblogs") &&
   !url.includes("inquiries.html" && !url.includes("settings"))
 ) {
+  // OPEN AND CLOSE USER MENU
+  document
+    .querySelector(".header-profile-picture")
+    .addEventListener("click", () => {
+      document.querySelector(".dropdown").classList.toggle("toggle-user-menu");
+    });
   openMobileNavBtn.addEventListener("click", () => {
     overlay.classList.add("show-overlay");
     mobileNav.classList.add("show-mobile-nav");
