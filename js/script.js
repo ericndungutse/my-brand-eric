@@ -6,14 +6,14 @@ const overlay = document.querySelector(".overlay");
 const openMobileNavBtn = document.querySelector(".open-mobile-nav-icon");
 const closeMobileNavBtn = document.querySelector(".close-mobile-nav");
 
+const logoutBtn = document.querySelector(".logout-btn");
+
 const url = document.URL;
 
 if (
   !url.includes("dashboard") &&
   !url.includes("manageblogs") &&
-  !url.includes(
-    "inquiries.html" && !url.includes("settings") && url.includes("dashboard")
-  )
+  !url.includes("inquiries.html" && !url.includes("settings"))
 ) {
   openMobileNavBtn.addEventListener("click", () => {
     overlay.classList.add("show-overlay");
@@ -67,3 +67,18 @@ const addLoginBtn = () => {
   ).innerHTML = `<a href="sign-in.html" class="btn btn--primary btn--big btn--link"
           >Signin</a>`;
 };
+
+// Logout
+document.querySelector(".logout-btn").addEventListener("click", (e) => {
+  e.preventDefault();
+  const url = document.URL;
+  localStorage.removeItem("token");
+  if (
+    url.includes("dashboard") ||
+    url.includes("manageblogs") ||
+    url.includes("inquiries.html") ||
+    url.includes("settings")
+  ) {
+    location.assign("/");
+  }
+});
