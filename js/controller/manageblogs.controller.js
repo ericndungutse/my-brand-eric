@@ -40,10 +40,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       // RENDER BLOGS / TABLE
       const renderBlogsTable = async () => {
         try {
-          const res = await fetch(`${url}/blogs`, {
+          const res = await fetch(`${url}/blogs/my-blogs`, {
             method: "GET",
             headers: {
               "content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
             },
           });
 
