@@ -3,6 +3,8 @@ import { fetchHandler, errorHandler, showAlert, btnLoading } from "../util.js";
 const state = {
   token: JSON.parse(localStorage.getItem("token")),
   user: JSON.parse(localStorage.getItem("user")),
+  likes: "",
+  liked: false,
 };
 
 const blogContainer = document.querySelector(".blog-page");
@@ -52,7 +54,6 @@ ${
   state.token === null
     ? ""
     : `
-    <button class="btn btn--tertiary btn--big like-btn" >Like</button>
     <form action="" class="form blog-page__comment-form">
         <textarea
           name=""
@@ -97,7 +98,7 @@ const renderComments = (comments) => {
   commentsContainer.innerHTML = "";
   comments.forEach((cmt) => {
     commentsContainer.insertAdjacentHTML(
-      "afterend",
+      "beforeend",
       `<div class="comment">
           <div class="comment__user">
             <img
@@ -164,6 +165,7 @@ document.addEventListener("submit", async (e) => {
 document.addEventListener("click", async (e) => {
   if (e.target.classList.contains("like-btn")) {
     try {
+      console.log("I like");
       const id = getId();
 
       const body = {
@@ -174,9 +176,9 @@ document.addEventListener("click", async (e) => {
         throw Error(res.message);
       }
 
-      e.target.classList.remove("btn--tertiary");
-      e.target.classList.add("btn--primary");
-      e.target.textContent = "Liked";
+      state.likes = state.likes++;
+      renderLikes(state.likes);
+      addBlogLiked();
     } catch (err) {
       errorHandler(err);
     }
@@ -195,7 +197,49 @@ document.addEventListener("DOMContentLoaded", async (e) => {
     }
 
     renderComments(res.data.comments);
+    await loadLikes();
   } catch (err) {
     errorHandler(err);
   }
 });
+
+// Load likes
+const loadLikes = async () => {
+  try {
+    const blogId = getId();
+
+    const res = await fetchHandler("GET", `blogs/${blogId}/likes`);
+
+    if (res.status !== "success") {
+      throw Error(res.message);
+    }
+
+    const user = res.data.likes.findIndex(
+      (like) => like.user.name === state.user.name
+    );
+
+    if (user !== -1) {
+      addBlogLiked();
+    }
+    renderLikes(res.data.likes.length);
+  } catch (err) {
+    errorHandler(err);
+  }
+};
+
+const renderLikes = (likes) => {
+  const txt = likes === 0 ? "" : likes > 0 ? "Likes" : "";
+  document.querySelector(".likes__count").textContent = `${
+    likes === 0 ? "" : likes
+  } ${txt}`;
+};
+
+const addBlogLiked = () => {
+  const btn = document.querySelector(".like-btn");
+
+  if (btn) {
+    btn.classList.remove("btn--tertiary");
+    btn.classList.add("btn--primary");
+    btn.textContent = "Liked";
+  }
+};

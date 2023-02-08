@@ -73,6 +73,8 @@ document.addEventListener(
 );
 
 const addLoginBtn = () => {
+  if (document.querySelector(".like-btn"))
+    document.querySelector(".like-btn").remove();
   document.querySelector(".header__user-nav").innerHTML = "";
   document.querySelector(
     ".header__user-nav"
@@ -97,6 +99,7 @@ if (document.querySelector(".logout-btn"))
       // Remove Like and Form
       document.querySelector(".like-btn").remove();
       document.querySelector(".blog-page__comment-form").remove();
+      addLoginBtn();
     } else {
       addLoginBtn();
     }

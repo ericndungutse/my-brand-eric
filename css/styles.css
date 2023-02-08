@@ -1762,6 +1762,14 @@ textarea {
   font-size: 2rem;
 }
 
+.likes {
+  display: flex;
+  gap: 0.8rem;
+  font-size: 1.4rem;
+  color: var(--color-black);
+  align-items: center;
+}
+
 /* Animations */
 @keyframes from-top {
   0% {
