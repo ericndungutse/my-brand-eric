@@ -223,7 +223,7 @@ class UI {
             ${data.title}
           </p>
 
-          <a href="/my-brand-eric/blog.html?id=${data._id}" class="btn btn--secondary btn-small btn--link"
+          <a href="/blog.html?id=${data._id}" class="btn btn--secondary btn-small btn--link"
             >Read More</a
           >
         </div>

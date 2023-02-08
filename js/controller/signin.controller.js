@@ -92,7 +92,7 @@ signinForm.addEventListener("submit", async (e) => {
     window.localStorage.setItem("token", JSON.stringify(data.token));
     window.localStorage.setItem("user", JSON.stringify(data.data.user));
 
-    location.assign("/my-brand-eric/dashboard.html");
+    location.assign("/dashboard.html");
   } catch (err) {
     btnLoading(btn, "removeLoading", "Login");
     errorHandler(err);

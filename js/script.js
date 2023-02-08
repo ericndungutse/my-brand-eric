@@ -29,10 +29,11 @@ if (
     mobileNav.classList.add("show-mobile-nav");
   });
 
-  closeMobileNavBtn.addEventListener("click", () => {
-    overlay.classList.remove("show-overlay");
-    mobileNav.classList.remove("show-mobile-nav");
-  });
+  if (closeMobileNavBtn)
+    closeMobileNavBtn.addEventListener("click", () => {
+      overlay.classList.remove("show-overlay");
+      mobileNav.classList.remove("show-mobile-nav");
+    });
 
   // Check User and change navigation
   document.addEventListener("DOMContentLoaded", async () => {
@@ -43,7 +44,7 @@ if (
 
       if (user) {
         if (document.URL.includes("sign-in")) {
-          return location.assign("/my-brand-eric");
+          return location.assign("/");
         }
         const userNav = document.querySelector(".header__user-nav");
         userNav
@@ -91,7 +92,7 @@ if (document.querySelector(".logout-btn"))
       url.includes("inquiries.html") ||
       url.includes("settings")
     ) {
-      location.assign("/my-brand-eric");
+      location.assign("/");
     } else if (url.includes("blog.html")) {
       // Remove Like and Form
       document.querySelector(".like-btn").remove();

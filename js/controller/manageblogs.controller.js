@@ -438,9 +438,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         BlogUI.renderBlogs(blogsContainer, blogs, "dashboardBlog");
       }
     } else {
-      location.assign("/my-brand-eric/sign-in.html");
+      location.assign("sign-in.html");
     }
   } else {
-    location.assign("/my-brand-eric/sign-in.html");
+    location.assign("sign-in.html");
   }
 });
