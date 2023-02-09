@@ -1776,6 +1776,41 @@ textarea {
   transform: translateY(-5%);
 }
 
+.forgot-password {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+a {
+  display: inline-flex;
+}
+
+.forgot-password__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.forgot-pass-form .paragraph {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 100;
+  color: var(--grey-color-dark);
+}
+
+.forgot-password__header img {
+  width: 4rem;
+}
+
+.forgot-password__header h2 {
+  font-size: 2rem;
+}
+
 /* Animations */
 @keyframes from-top {
   0% {
