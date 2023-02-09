@@ -7,7 +7,7 @@
     <link rel="icon" type="image/x-icon" href="img/favicon.png" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/validation.css" />
-    <title>Sigin | Eric</title>
+    <title>Sign up | Eric</title>
   </head>
   <body>
     <!-- HEADER -->
@@ -17,6 +17,7 @@
           <img class="header__logo" src="img/Logo.png" />
         </a>
       </div>
+
       <nav class="header__nav">
         <a href="/" class="link header__nav-link">Home</a>
         <a href="about.html" class="link header__nav-link">About Me</a>
@@ -39,7 +40,7 @@
     <div class="mobile-nav">
       <spam class="close-mobile-nav">&times;</spam>
       <nav class="mobile-nav__nav">
-        <a href="/ class="link mobile-nav__nav-link">Home</a>
+        <a href="/" class="link mobile-nav__nav-link">Home</a>
         <a href="about.html" class="link mobile-nav__nav-link">About Me</a>
         <a href="skills.html" class="link mobile-nav__nav-link">Skills</a>
         <a href="portofolio.html" class="link mobile-nav__nav-link">My Work</a>
@@ -55,21 +56,44 @@
       </div>
     </div>
 
-    <!-- Sign in -->
+    <!-- Sign up -->
     <section class="flex-section">
-      <form class="form sign-in-form">
+      <form class="form sign-up-form">
         <div class="form--header">
-          <h2 class="form-title">Log in with Email</h2>
+          <h2 class="form-title">Create Account</h2>
         </div>
 
         <div class="form-input-group">
-          <label for="" class="form-input-label">Email</label>
+          <label for="name" class="form-input-label">Name</label>
+          <div class="input-icon-container">
+            <input
+              type="name"
+              class="form-input inputInitial"
+              name="name"
+              id="name"
+              placeholder="Enter your name..."
+              required
+              minlength="3"
+              autocomplete="off"
+            />
+
+            <ion-icon
+              name="close-circle-outline"
+              class="login-input-icon invalid-icon"
+            ></ion-icon>
+
+            <span class="validation-msg"> Enter a yourname </span>
+          </div>
+        </div>
+
+        <div class="form-input-group">
+          <label for="signupEmail" class="form-input-label">Email</label>
           <div class="input-icon-container">
             <input
               type="email"
               class="form-input inputInitial"
               name="email"
-              id="signinEmail"
+              id="signupEmail"
               placeholder="Enter your Email..."
               required
               autocomplete="off"
@@ -109,81 +133,34 @@
           </div>
         </div>
 
-        <button class="btn btn--primary btn--small full-width" id="login-btn">
-          Login
-        </button>
+        <div class="form-input-group">
+          <label for="" class="form-input-label">Confirm Password</label>
+          <div class="input-icon-container">
+            <input
+              type="password"
+              class="form-input inputInitial"
+              placeholder="Confirm password..."
+              required
+              name="confirmPassword"
+            />
 
-        <div class="form-help">
-          <a href="#" class="link link--text">Forgot password?</a>
-          <a href="/signup.html" class="link link--text">Not registered?</a>
+            <ion-icon
+              name="close-circle-outline"
+              class="login-input-icon invalid-icon"
+            ></ion-icon>
+            <span class="validation-msg">
+              Password must contain atleast 8 characters, special
+              character(@,%,!,^,...), lowecase and uppercase letter, and a
+              number.
+            </span>
+          </div>
         </div>
+
+        <button class="btn btn--primary btn--small full-width" id="signup-btn">
+          Sign up
+        </button>
       </form>
-
-      <div class="separator">
-        <div class="or-separator">
-          <div class="vertical-line"></div>
-          <div class="separator-text">OR</div>
-          <div class="vertical-line"></div>
-        </div>
-      </div>
-
-      <div class="mobile-separator">
-        <div class="horizontal-line"></div>
-        <div class="mobile-separator__text">OR</div>
-        <div class="horizontal-line"></div>
-      </div>
-
-      <div class="login-with">
-        <button class="login-with-btn">
-          <img src="img/google_Acc_1-removebg-preview.png" alt="" />
-          <p class="paragraph">Login with Google</p>
-        </button>
-        <button class="login-with-btn">
-          <img src="img/facebook-svgrepo-com.svg" alt="" />
-          <p class="paragraph">Login with Facebook</p>
-        </button>
-      </div>
     </section>
-
-    <aside class="social-links">
-      <a href="#">
-        <img
-          class="social-icon"
-          src="img/social -icons/github-fill-svgrepo-com.svg"
-          alt=""
-        />
-      </a>
-      <a href="#">
-        <img
-          class="social-icon"
-          src="img/social -icons/new-logo-gmail-svgrepo-com.svg"
-          alt=""
-        />
-      </a>
-
-      <a href="#">
-        <img
-          class="social-icon"
-          src="img/social -iconS/linkedin-linked-in-svgrepo-com.svg"
-          alt=""
-        />
-      </a>
-      <a href="#">
-        <img
-          class="social-icon"
-          src="img/social -icons/instagram-svgrepo-com.svg"
-          alt=""
-        />
-      </a>
-
-      <a href="#">
-        <img
-          class="social-icon"
-          src="img/social -icons/twitter-svgrepo-com (1).svg"
-          alt=""
-        />
-      </a>
-    </aside>
 
     <!-- FOOTER -->
     <footer class="footer"></footer>
@@ -205,7 +182,7 @@
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
 
-    <script type="module" src="js/controller/signin.controller.js"></script>
+    <script type="module" src="js/controller/signup.controller.js"></script>
     <script type="module" src="js/script.js"></script>
   </body>
 </html>

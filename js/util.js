@@ -16,7 +16,9 @@ export function isEmailValid(email) {
 
 // Check Password
 export function isPassValid(password) {
-  return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password);
+  return /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(
+    password
+  );
 }
 
 // Input styles if valid

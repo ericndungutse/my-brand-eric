@@ -1770,6 +1770,12 @@ textarea {
   align-items: center;
 }
 
+.form.form.sign-up-form {
+  margin: 0 auto;
+  width: 90%;
+  transform: translateY(-5%);
+}
+
 /* Animations */
 @keyframes from-top {
   0% {
