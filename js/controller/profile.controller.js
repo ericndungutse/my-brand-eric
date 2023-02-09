@@ -28,10 +28,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       const user_name = formElements["name"];
       const user_email = formElements["email"];
+      const user_phone = formElements["phone"];
+      const user_country = formElements["country"];
       const btn = formElements["update-profile-btn"];
 
       user_name.value = state.user.name;
       user_email.value = state.user.email;
+      user_phone.value = state.user.phone ? state.user.phone : "";
+      user_country.value = state.user.country ? state.user.country : "";
 
       document.querySelector(".checking_user").style.display = "none";
 
@@ -42,8 +46,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         try {
           const body = {
-            name: user_name.value,
-            email: user_email.value,
+            ...(user_name.value && { name: user_name.value }),
+            ...(user_email.value && { email: user_email.value }),
+            ...(user_phone.value && { tel: user_phone.value }),
+            ...(user_country.value && { country: user_country.value }),
           };
 
           const res = await fetchHandler(
