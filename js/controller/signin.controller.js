@@ -90,7 +90,7 @@ signinForm.addEventListener("submit", async (e) => {
     btnLoading(btn, "removeLoading", "Login");
 
     window.localStorage.setItem("token", JSON.stringify(data.token));
-    window.localStorage.setItem("user", JSON.stringify(data.data.user));
+    // window.localStorage.setItem("user", JSON.stringify(data.data.user));
 
     location.assign("/dashboard.html");
   } catch (err) {

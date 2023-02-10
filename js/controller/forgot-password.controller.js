@@ -1,10 +1,9 @@
 import {
   isEmailValid,
-  isPassValid,
+  fetchHandler,
   inputInvalid,
   inputValid,
   initialInputStyles,
-  url,
   showAlert,
   btnLoading,
   errorHandler,
@@ -35,5 +34,29 @@ email?.addEventListener("blur", (e) => {
     initialInputStyles(e.target);
   } else if (!isEmailValid(email.value)) {
     inputInvalid(email);
+  }
+});
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  try {
+    btnLoading(btn, "addLoading");
+    const body = {
+      email: email.value,
+    };
+
+    const res = await fetchHandler("POST", "auth/forgot-password", null, body);
+
+    if (res.status !== "success") {
+      throw Error(res.message);
+    }
+
+    email.value = "";
+    btnLoading(btn, "removeLoading", "Send");
+    showAlert("success", res.message);
+  } catch (err) {
+    btnLoading(btn, "removeLoading", "Send");
+    errorHandler(err);
   }
 });

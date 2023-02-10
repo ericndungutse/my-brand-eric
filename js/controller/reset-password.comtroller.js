@@ -1,5 +1,5 @@
 import {
-  isEmailValid,
+  fetchHandler,
   isPassValid,
   inputInvalid,
   inputValid,
@@ -64,5 +64,47 @@ confirmPassword.addEventListener("blur", (e) => {
     inputInvalid(e.target.value);
   } else {
     inputValid(e.target);
+  }
+});
+
+const getParam = () => {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+
+  return urlParams.get("token");
+};
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const token = getParam();
+
+
+
+  
+
+  try {
+    btnLoading(btn, "addLoading");
+    const body = {
+      password: newPassword.value,
+      confirmPassword: confirmPassword.value,
+    };
+
+    const res = await fetchHandler(
+      "POST",
+      `auth/reset-password/${token}`,
+      null,
+      body
+    );
+
+    if (res.status !== "success") {
+      throw Error(res.message);
+    }
+
+    window.localStorage.setItem("token", JSON.stringify(data.token));
+    location.assign("/dashboard.html");
+  } catch (err) {
+    btnLoading(btn, "removeLoading", "Send");
+    errorHandler(err);
   }
 });
