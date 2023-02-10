@@ -5,7 +5,6 @@ import {
   inputValid,
   initialInputStyles,
   url,
-  showAlert,
   btnLoading,
   errorHandler,
 } from "../util.js";
@@ -79,10 +78,6 @@ form.addEventListener("submit", async (e) => {
 
   const token = getParam();
 
-
-
-  
-
   try {
     btnLoading(btn, "addLoading");
     const body = {
@@ -101,7 +96,7 @@ form.addEventListener("submit", async (e) => {
       throw Error(res.message);
     }
 
-    window.localStorage.setItem("token", JSON.stringify(data.token));
+    window.localStorage.setItem("token", JSON.stringify(res.token));
     location.assign("/dashboard.html");
   } catch (err) {
     btnLoading(btn, "removeLoading", "Send");

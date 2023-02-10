@@ -53,6 +53,7 @@ form.addEventListener("submit", async (e) => {
     }
 
     email.value = "";
+    initialInputStyles(email);
     btnLoading(btn, "removeLoading", "Send");
     showAlert("success", res.message);
   } catch (err) {
