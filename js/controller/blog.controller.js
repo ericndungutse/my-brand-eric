@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
     const res = await fetchHandler("GET", `blogs/${id}`);
 
     if (!res.status === "success") {
-      throw Error(data.message);
+      throw Error(res.message);
     }
 
     renderBlog(res.data.blog);

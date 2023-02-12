@@ -33,7 +33,6 @@ html {
 }
 
 body {
-  font-family: "Happy Monkey", cursive;
   letter-spacing: 0.1rem;
   font-weight: 300;
   line-height: 1.4;
@@ -230,7 +229,7 @@ body {
 .mobile-nav__nav-link {
   display: block;
   padding: 1rem 0;
-  color: var(--color-white);
+  color: var(--color-white) !important;
   font-size: 1.6rem;
   text-align: center;
 }
@@ -616,6 +615,7 @@ body {
   animation-name: from-top;
   animation-duration: 1s;
   animation-timing-function: ease-in-out;
+  font-size: 4.5rem !important;
 }
 
 .showcase__intro .paragraph,
@@ -623,6 +623,7 @@ body {
   animation-name: from-bottom;
   animation-duration: 2s;
   animation-delay: 0.8s;
+  font-size: 1.6rem;
   animation-fill-mode: backwards;
   animation-timing-function: ease-in-out;
 }
@@ -1071,7 +1072,7 @@ thead {
 /* HEADING */
 .heading-primary {
   display: inline-block;
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 100;
   background: linear-gradient(
     90deg,
@@ -1847,8 +1848,18 @@ a {
   }
 }
 
+/* Tablet Landscape */
+@media only screen and (max-width: 1200px) {
+  :root {
+    --centering-padding: 6rem;
+  }
+}
+
 /* Tablet Potrait */
 @media only screen and (max-width: 900px) {
+  :root {
+    --centering-padding: 2rem;
+  }
   .flex-section {
     margin-bottom: 3rem;
   }
@@ -1891,8 +1902,99 @@ a {
   }
 }
 
+/* Mobile-Nav */
+@media only screen and (max-width: 800px) {
+  html {
+    font-size: 72%;
+  }
+  .flex-section {
+    flex-direction: column;
+    gap: 3rem;
+    margin-bottom: 5rem;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(100%, 45rem));
+    justify-content: center;
+  }
+
+  .about-me__text {
+    min-width: 100%;
+  }
+
+  .about-me__image-container {
+    display: block;
+    min-width: 100%;
+  }
+
+  .about-me__image {
+    max-width: 100%;
+    height: fit-content;
+  }
+
+  .showcase__intro {
+    width: 100%;
+  }
+
+  .showcase__image--container {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .showcase__image {
+    max-width: 100%;
+  }
+
+  .social-links {
+    position: relative;
+    margin: 0 auto;
+    height: fit-content;
+    width: fit-content;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+  .separator {
+    display: none;
+  }
+
+  .mobile-separator {
+    display: flex;
+  }
+
+  .login-with {
+    width: 100%;
+    max-width: unset;
+    min-width: unset;
+  }
+
+  .form {
+    width: 100%;
+    min-width: unset;
+    max-width: unset;
+  }
+  .shadow-wrapper {
+    width: 100%;
+  }
+  .contactme__showcase {
+    padding: 2rem 2rem 10rem 2rem;
+    text-align: center;
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 75%,
+      55% 75%,
+      46% 100%,
+      35% 75%,
+      0 75%
+    );
+  }
+}
+
 /* Phone */
 @media only screen and (max-width: 600px) {
+  :root {
+    --centering-padding: 7.5%;
+  }
   .flex-section {
     flex-direction: column;
     gap: 3rem;
@@ -1916,33 +2018,6 @@ a {
     flex-direction: row;
     gap: 0.5rem;
   }
-}
-/* Tablet Landscape */
-@media only screen and (max-width: 1200px) {
-  /* html {
-    font-size: 62%;
-  } */
-  :root {
-    --centering-padding: 6rem;
-  }
-}
-
-/* Tablet Potrait */
-@media only screen and (max-width: 900px) {
-  :root {
-    --centering-padding: 2rem;
-  }
-}
-
-/* Phone */
-@media only screen and (max-width: 600px) {
-  :root {
-    --centering-padding: 7.5%;
-  }
-}
-
-/* Phone */
-@media (max-width: 600px) {
   .separator {
     display: none;
   }
