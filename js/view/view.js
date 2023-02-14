@@ -355,7 +355,6 @@ class TableClass extends UI {
   }
 
   insertRow(parentEl, data, blog = false) {
-    console.log(data);
     const rowType = blog === true ? "blogRow" : "inquiryRow";
 
     let obj = { ...data };
@@ -373,16 +372,14 @@ class BlogClass extends UI {
   }
 
   renderBlogs(parentEl, data, type) {
-    if (data.length === 0) return alert("No Document found");
+    if (data.length === 0) return "no blogs";
 
-    parentEl.innerHTML = "";
+    // parentEl.innerHTML = "";
 
     data.forEach((blog) => {
-      console.log("Blog To render", blog);
       let { title, user, _id, photo, createdAt } = blog;
 
       createdAt = dateFormatter(createdAt);
-      console.log(createdAt);
 
       const markup = this._buildMarkup(`${type}`, {
         title,
