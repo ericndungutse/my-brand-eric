@@ -1763,6 +1763,10 @@ textarea {
   font-size: 2rem;
 }
 
+.infinite-scroll {
+  margin-top: 5rem;
+}
+
 .likes {
   display: flex;
   gap: 0.8rem;
