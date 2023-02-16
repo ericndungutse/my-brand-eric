@@ -1213,11 +1213,11 @@ thead {
 }
 
 .inputValid {
-  outline: 0.1rem solid #00c000;
+  outline: 0.1rem solid #00c000 !important;
 }
 
 .inputInvalid {
-  outline: 0.1rem solid var(--secondary-color);
+  outline: 0.1rem solid var(--secondary-color) !important;
 }
 
 .inputInitial {

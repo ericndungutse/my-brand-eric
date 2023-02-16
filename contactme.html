@@ -12,9 +12,7 @@
     <!-- HEADER -->
     <header class="header">
       <div class="header__logo-container">
-        <a href="/"
-          ><img class="header__logo" src="img/Logo.png"
-        /></a>
+        <a href="/"><img class="header__logo" src="img/Logo.png" /></a>
       </div>
       <nav class="header__nav">
         <a href="/" class="link header__nav-link">Home</a>
@@ -89,8 +87,8 @@
     </div>
 
     <!-- Sign in Board -->
-    <section class="flex-section contact-me">
-      <div class="shadow-wrapper">
+    <section class="flex-section contact-me" id="contact-me-root">
+      <!-- <div class="shadow-wrapper">
         <div class="contactme__showcase">
           <h2 class="contact-me__heading">Contact Me</h2>
           <p class="pragraph contact-me__text">
@@ -98,9 +96,10 @@
             response will come in hours.
           </p>
         </div>
-      </div>
+      </div> -->
 
-      <form class="form contact-me-form">
+      <!-- <form class="form contact-me-form">
+
         <div class="form--header">
           <h2 class="form-title">Reach out to me</h2>
         </div>
@@ -176,7 +175,9 @@
         >
           Send
         </button>
-      </form>
+      </form> -->
+
+      <!-- <div id="form-root"></div> -->
     </section>
 
     <!-- SOCIAL LINKS -->
@@ -241,7 +242,18 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="src/contactme.component.jsx" type="text/babel"></script>
     <script type="module" src="js/script.js"></script>
-    <script type="module" src="js/controller/contactme.controller.js"></script>
+    <!-- <script type="module" src="js/controller/contactme.controller.js"></script> -->
   </body>
 </html>
