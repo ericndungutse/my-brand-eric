@@ -71,10 +71,15 @@
 
     <!-- BLOGS -->
     <h2 class="heading-primary blogs__heading">NEWS</h2>
-    <section class="grid-container blogs">
+    <!-- <section class="grid-container blogs">
       <div class="spinner-container blogs__spinner">
         <div class="spinner spinner--bigger"></div>
       </div>
+    </section>
+    <div class="spinner-container blogs__spinner infinite-scroll"></div> -->
+
+    <section class="grid-container blogs" id="root">
+
     </section>
     <div class="spinner-container blogs__spinner infinite-scroll"></div>
 
@@ -127,7 +132,20 @@
       </clipPath>
     </svg>
 
+        ></script>
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="src/blogs.component.jsx" type="text/babel"></script>
+
     <script type="module" src="js/script.js"></script>
-    <script type="module" src="js/controller/blogs.controller.js"></script>
+    <!-- <script type="module" src="js/controller/blogs.controller.js"></script> -->
   </body>
 </html>
