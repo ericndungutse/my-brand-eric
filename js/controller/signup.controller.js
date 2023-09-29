@@ -10,18 +10,18 @@ import {
   btnLoading,
   errorHandler,
   fetchHandler,
-} from "../util.js";
+} from '../util.js';
 
-const signupForm = document.querySelector(".sign-up-form");
+const signupForm = document.querySelector('.sign-up-form');
 const formElements = signupForm.elements;
 
-const name = formElements["name"];
-const email = formElements["email"];
-const password = formElements["password"];
-const confirmPassword = formElements["confirmPassword"];
-const btn = formElements["signup-btn"];
+const name = formElements['name'];
+const email = formElements['email'];
+const password = formElements['password'];
+const confirmPassword = formElements['confirmPassword'];
+const btn = formElements['signup-btn'];
 
-name.addEventListener("focus", (e) => {
+name.addEventListener('focus', (e) => {
   if (!isTextFieldEmpty(name.value)) {
     inputInvalid(name);
   } else {
@@ -29,7 +29,7 @@ name.addEventListener("focus", (e) => {
   }
 });
 
-name.addEventListener("input", (e) => {
+name.addEventListener('input', (e) => {
   if (!isTextFieldEmpty(name.value)) {
     inputInvalid(name);
   } else {
@@ -37,7 +37,7 @@ name.addEventListener("input", (e) => {
   }
 });
 
-name.addEventListener("blur", (e) => {
+name.addEventListener('blur', (e) => {
   if (name.value < 1) {
     initialInputStyles(name);
   } else if (!isTextFieldEmpty(name.value)) {
@@ -45,7 +45,7 @@ name.addEventListener("blur", (e) => {
   }
 });
 
-email?.addEventListener("input", (e) => {
+email?.addEventListener('input', (e) => {
   if (!isEmailValid(e.target.value)) {
     inputInvalid(e.target);
   } else {
@@ -53,13 +53,13 @@ email?.addEventListener("input", (e) => {
   }
 });
 
-email?.addEventListener("focus", (e) => {
+email?.addEventListener('focus', (e) => {
   if (!isEmailValid(e.target.value) || e.target.value.length === 0) {
     inputInvalid(e.target);
   }
 });
 
-email?.addEventListener("blur", (e) => {
+email?.addEventListener('blur', (e) => {
   if (e.target.value < 1) {
     initialInputStyles(e.target);
   } else if (!isEmailValid(email.value)) {
@@ -67,7 +67,7 @@ email?.addEventListener("blur", (e) => {
   }
 });
 
-password.addEventListener("focus", (e) => {
+password.addEventListener('focus', (e) => {
   if (!isPassValid(e.target.value)) {
     inputInvalid(e.target);
   } else {
@@ -75,7 +75,7 @@ password.addEventListener("focus", (e) => {
   }
 });
 
-password.addEventListener("input", (e) => {
+password.addEventListener('input', (e) => {
   if (!isPassValid(e.target.value)) {
     inputInvalid(e.target);
   } else {
@@ -83,7 +83,7 @@ password.addEventListener("input", (e) => {
   }
 });
 
-password.addEventListener("blur", (e) => {
+password.addEventListener('blur', (e) => {
   if (e.target.value < 1) {
     initialInputStyles(e.target);
   } else if (!isPassValid(e.target.value)) {
@@ -91,7 +91,7 @@ password.addEventListener("blur", (e) => {
   }
 });
 
-confirmPassword.addEventListener("focus", (e) => {
+confirmPassword.addEventListener('focus', (e) => {
   if (!isPassValid(e.target.value)) {
     inputInvalid(e.target);
   } else {
@@ -99,7 +99,7 @@ confirmPassword.addEventListener("focus", (e) => {
   }
 });
 
-confirmPassword.addEventListener("input", (e) => {
+confirmPassword.addEventListener('input', (e) => {
   if (!isPassValid(e.target.value)) {
     inputInvalid(e.target);
   } else {
@@ -107,7 +107,7 @@ confirmPassword.addEventListener("input", (e) => {
   }
 });
 
-confirmPassword.addEventListener("blur", (e) => {
+confirmPassword.addEventListener('blur', (e) => {
   if (e.target.value < 1) {
     initialInputStyles(e.target);
   } else if (!isPassValid(e.target.value)) {
@@ -118,7 +118,7 @@ confirmPassword.addEventListener("blur", (e) => {
 });
 
 // ***** SIGNING UP ******
-signupForm.addEventListener("submit", async (e) => {
+signupForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   try {
     const reqBody = {
@@ -128,27 +128,27 @@ signupForm.addEventListener("submit", async (e) => {
       confirmPassword: confirmPassword.value,
     };
 
-    btnLoading(btn, "addLoading");
+    btnLoading(btn, 'addLoading');
     if (reqBody.password !== reqBody.confirmPassword) {
-      alert("Paswords do not match");
-      btnLoading(btn, "removeLoading", "Sign up");
+      alert('Paswords do not match');
+      btnLoading(btn, 'removeLoading', 'Sign up');
       return false;
     }
 
-    const res = await fetchHandler("POST", "auth/signup", null, reqBody);
+    const res = await fetchHandler('POST', 'auth/signup', null, reqBody);
 
-    if (res.status === "fail") {
-      btnLoading(btn, "removeLoading", "Login");
+    if (res.status === 'fail') {
+      btnLoading(btn, 'removeLoading', 'Login');
       throw Error(res.message);
     }
 
-    btnLoading(btn, "removeLoading", "Login");
+    btnLoading(btn, 'removeLoading', 'Login');
 
-    window.localStorage.setItem("token", JSON.stringify(res.token));
+    window.localStorage.setItem('token', JSON.stringify(res.token));
 
-    location.assign("/dashboard.html");
+    location.assign('/dashboard.html');
   } catch (err) {
-    btnLoading(btn, "removeLoading", "Login");
+    btnLoading(btn, 'removeLoading', 'Login');
     errorHandler(err);
   }
 });
